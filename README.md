@@ -13,8 +13,9 @@ Here's a list of the main packages used in this project, along with their purpos
 
 2. **freezed**: Code generation for models/unions/pattern matching
    ```
-   flutter pub add freezed
-   flutter pub add --dev build_runner
+   flutter pub add freezed_annotation
+   flutter pub add dev:freezed
+   flutter pub add dev:build_runner
    ```
 
 3. **dio**: HTTP client for API requests
