@@ -4,8 +4,8 @@ import 'package:flutter_perfect_ddd/domain/anime/i_anime_repossitory.dart';
 import 'package:flutter_perfect_ddd/infrastructure/anime/anime_repository.dart';
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
+import '../../../env.dart';
 import '../../anime/anime_remote.dart';
-import '../dio_interceptors/my_dio_interceptor.dart';
 import '../my_enums/my_enums.dart';
 import 'injection.config.dart';
 
@@ -18,9 +18,9 @@ final GetIt getIt = GetIt.instance;
 )
 void configureDependencies() => getIt.init();
 
-void setupLocator({Map<EnumResponse, bool>? loggingOptions}) {
-  getIt.registerLazySingleton<Dio>(
-      () => MyDioInterceptor.getDio(loggingOptions: loggingOptions));
+void setupLocator() {
+  getIt
+      .registerLazySingleton<Dio>(() => Dio(BaseOptions(baseUrl: Env.baseUrl)));
 
   ///home
   getIt.registerLazySingleton<AnimeRemote>(() => AnimeRemote(getIt<Dio>()));

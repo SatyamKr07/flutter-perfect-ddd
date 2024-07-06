@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'route/app_router.dart';
 
-class AppWidget extends StatelessWidget {
-  const AppWidget({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_perfect_ddd/presentation/core/app_widget.dart';
+import 'package:flutter_perfect_ddd/presentation/core/my_app.dart';
 
 import 'infrastructure/core/di/injection.dart';
-import 'infrastructure/core/my_enums/my_enums.dart';
 
-void mainCommon({Map<EnumResponse, bool>? loggingOptions}) async {
+void mainCommon() async {
   WidgetsFlutterBinding.ensureInitialized();
-  setupLocator(loggingOptions: loggingOptions);
-  runApp(const AppWidget());
+  setupLocator();
+  runApp(const MyApp());
 }
