@@ -1,30 +1,31 @@
-enum EnvironmentEnum { dev, uat, prod }
+
+import 'infrastructure/core/my_enums/my_enums.dart';
 
 class Env {
-  static late EnvironmentEnum _env;
+  static late EnumEnv _env;
 
-  static void setEnvironment(EnvironmentEnum env) {
+  static void setEnvironment(EnumEnv env) {
     _env = env;
   }
 
-  static EnvironmentEnum get getEnv {
+  static EnumEnv get getEnv {
     switch (_env) {
-      case EnvironmentEnum.dev:
-        return EnvironmentEnum.dev;
-      case EnvironmentEnum.uat:
-        return EnvironmentEnum.uat;
-      case EnvironmentEnum.prod:
-        return EnvironmentEnum.prod;
+      case EnumEnv.dev:
+        return EnumEnv.dev;
+      case EnumEnv.uat:
+        return EnumEnv.uat;
+      case EnumEnv.prod:
+        return EnumEnv.prod;
     }
   }
 
   static String get baseUrl {
     switch (_env) {
-      case EnvironmentEnum.dev:
+      case EnumEnv.dev:
         return 'https://api.jikan.moe/v4';
-      case EnvironmentEnum.uat:
+      case EnumEnv.uat:
         return 'https://uat-api.example.com';
-      case EnvironmentEnum.prod:
+      case EnumEnv.prod:
         return 'https://api.example.com';
     }
   }

@@ -4,7 +4,7 @@ import '../my_enums/my_enums.dart';
 import '../services/my_logger.dart';
 
 class MyDioInterceptor {
-  static Dio getDio({Map<ResponseEnum, bool>? loggingOptions}) {
+  static Dio getDio({Map<EnumResponse, bool>? loggingOptions}) {
     final dio = Dio(BaseOptions(baseUrl: Env.baseUrl));
 
     // Determine logging options based on environment
@@ -23,8 +23,8 @@ class MyDioInterceptor {
         // }
 
         // Log request if enabled
-        if (effectiveLoggingOptions.containsKey(ResponseEnum.request) &&
-            effectiveLoggingOptions[ResponseEnum.request]!) {
+        if (effectiveLoggingOptions.containsKey(EnumResponse.request) &&
+            effectiveLoggingOptions[EnumResponse.request]!) {
           _logRequest(options);
         }
 
@@ -32,16 +32,16 @@ class MyDioInterceptor {
       },
       onResponse: (response, handler) {
         // Log response if enabled
-        if (effectiveLoggingOptions.containsKey(ResponseEnum.response) &&
-            effectiveLoggingOptions[ResponseEnum.response]!) {
+        if (effectiveLoggingOptions.containsKey(EnumResponse.response) &&
+            effectiveLoggingOptions[EnumResponse.response]!) {
           _logResponse(response);
         }
         handler.next(response);
       },
       onError: (DioException error, handler) {
         // Log error if enabled
-        if (effectiveLoggingOptions.containsKey(ResponseEnum.error) &&
-            effectiveLoggingOptions[ResponseEnum.error]!) {
+        if (effectiveLoggingOptions.containsKey(EnumResponse.error) &&
+            effectiveLoggingOptions[EnumResponse.error]!) {
           _logError(error);
         }
         handler.next(error);
@@ -73,18 +73,18 @@ class MyDioInterceptor {
     logger.e('[ERROR] => DATA: ${error.response?.data}');
   }
 
-  static Map<ResponseEnum, bool> _getLoggingOptionsForEnvironment(
-      Map<ResponseEnum, bool>? loggingOptions) {
+  static Map<EnumResponse, bool> _getLoggingOptionsForEnvironment(
+      Map<EnumResponse, bool>? loggingOptions) {
     switch (Env.getEnv) {
-      case EnvironmentEnum.dev:
+      case EnumEnv.dev:
         return loggingOptions ??
             {
-              ResponseEnum.request: true,
-              ResponseEnum.response: true,
-              ResponseEnum.error: true,
+              EnumResponse.request: true,
+              EnumResponse.response: true,
+              EnumResponse.error: true,
             };
-      case EnvironmentEnum.uat:
-      case EnvironmentEnum.prod:
+      case EnumEnv.uat:
+      case EnumEnv.prod:
         return {};
       default:
         return {};

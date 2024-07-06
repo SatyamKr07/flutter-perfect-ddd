@@ -5,11 +5,11 @@ import 'infrastructure/core/my_enums/my_enums.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  Env.setEnvironment(EnvironmentEnum.dev);
-  final Map<ResponseEnum, bool> loggingOptions = {
-    ResponseEnum.request: true,
-    ResponseEnum.response: true,
-    ResponseEnum.error: true,
+  Env.setEnvironment(EnumEnv.dev);
+  final Map<EnumResponse, bool> loggingOptions = {
+    EnumResponse.request: true,
+    EnumResponse.response: true,
+    EnumResponse.error: true,
   };
   mainCommon(loggingOptions: loggingOptions);
 }

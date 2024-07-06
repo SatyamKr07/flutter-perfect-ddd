@@ -18,7 +18,7 @@ final GetIt getIt = GetIt.instance;
 )
 void configureDependencies() => getIt.init();
 
-void setupLocator({Map<ResponseEnum, bool>? loggingOptions}) {
+void setupLocator({Map<EnumResponse, bool>? loggingOptions}) {
   getIt.registerLazySingleton<Dio>(
       () => MyDioInterceptor.getDio(loggingOptions: loggingOptions));
 
