@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
 import '../anime/anime_page.dart';
+import '../profile/profile_page.dart';
 
 class MyBottomNavBar extends StatefulWidget {
   const MyBottomNavBar({super.key});
@@ -16,8 +16,7 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
     const AnimePage(),
     // NewsPage(),
     const Text("NewsPage"),
-    // ProfilePage(),
-    const Text("ProfilePage")
+    ProfilePage(),
   ];
 
   void _onItemTapped(int index) {
