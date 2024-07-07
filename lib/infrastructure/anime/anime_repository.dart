@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter_perfect_ddd/infrastructure/anime/anime_remote.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:injectable/injectable.dart';
@@ -11,33 +12,24 @@ class AnimeRepository implements IAnimeRepository {
   AnimeRepository(this._animeRemote);
 
   @override
-  Future<Either<Failure, List<AnimeModel>>> getPopularAnime() async {
+  Future<Either<String, List<AnimeModel>>> getPopularAnime() async {
     try {
       final response = await _animeRemote.getPopularAnime();
       return right(response.data);
+    } on DioException {
+      return left("Dio Error");
     } catch (e) {
-      return left(const Failure.serverError());
+      return left(e.toString());
     }
   }
 
   // @override //without retrofilt
-  // Future<Either<Failure, List<AnimeModel>>>
-  //     getPopularAnime() async {
-  //   Dio _dio = Dio(BaseOptions(baseUrl: 'https://api.jikan.moe/v4'));
-
+  // Future<Either<String, List<AnimeModel>>>  getPopularAnime() async {
   //   try {
-  //     final response = await _dio.get('/top/anime');
-
-  //     if (response.statusCode == 200) {
-  //       final List<dynamic> animeList = response.data['data'];
-  //       return right(animeList
-  //           .map((animeData) => AnimeModel.fromJson(animeData))
-  //           .toList());
-  //     } else {
-  //       return left(Failure.serverError());
-  //     }
-  //   } on DioException catch (e) {
-  //     return left(Failure.networkError());
+  //     final response = await _animeRemote.getPopularAnime();
+  //     return right(response);
+  //   } catch (e) {
+  //     return left(e.toString());
   //   }
   // }
 }

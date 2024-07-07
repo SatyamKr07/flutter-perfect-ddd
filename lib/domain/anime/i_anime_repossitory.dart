@@ -3,5 +3,5 @@ import '../core/failures.dart';
 import '../core/models/anime/anime_model.dart';
 
 abstract class IAnimeRepository {
-  Future<Either<Failure, List<AnimeModel>>> getPopularAnime();
+  Future<Either<String, List<AnimeModel>>> getPopularAnime();
 }

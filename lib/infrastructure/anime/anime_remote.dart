@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -14,5 +15,21 @@ abstract class AnimeRemote {
 
   @GET('/top/anime')
   Future<AnimeResponse> getPopularAnime();
-
 }
+
+//without retrofit, just using dio
+// class AnimeRemote {
+//   final Dio _dio = GetIt.instance<Dio>();
+
+//   Future<List<AnimeModel>> getPopularAnime() async {
+//     try {
+//       final response = await _dio.get('/top/anime');
+//       final data = response.data['data'] as List;
+//       return data
+//           .map((item) => AnimeModel.fromJson(item as Map<String, dynamic>))
+//           .toList();
+//     } catch (e) {
+//       throw Exception(e);
+//     }
+//   }
+// }
