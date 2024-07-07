@@ -6,5 +6,5 @@ import 'infrastructure/core/di/injection.dart';
 void mainCommon() async {
   WidgetsFlutterBinding.ensureInitialized();
   setupLocator();
-  runApp(const MyApp());
+  runApp(MyApp());
 }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../application/anime/anime_cubit.dart';
+import '../../application/my_app/my_app_cubit.dart';
+import '../../application/my_app/my_app_state.dart';
 import '../core/components/my_cached_network_image.dart';
 
 class AnimePage extends StatelessWidget {
@@ -9,7 +11,18 @@ class AnimePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Anime')),
+      appBar: AppBar(
+        title: const Text('Anime'),
+        actions: [
+          Switch(
+            value: context.select((MyAppCubit cubit) =>
+                cubit.state.themeMode == ThemeModeType.dark),
+            onChanged: (value) {
+              context.read<MyAppCubit>().toggleTheme();
+            },
+          ),
+        ],
+      ),
       body: BlocBuilder<AnimeCubit, AnimeState>(
         builder: (context, state) {
           return state.when(
