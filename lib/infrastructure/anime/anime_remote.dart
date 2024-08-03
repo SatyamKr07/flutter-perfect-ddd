@@ -14,7 +14,10 @@ abstract class AnimeRemote {
   factory AnimeRemote(Dio dio) = _AnimeRemote;
 
   @GET('/top/anime')
-  Future<AnimeResponse> getPopularAnime();
+  Future<AnimeResponse> getPopularAnime({
+    @Query('page') int page = 1,
+    @Query('limit') int limit = 20,
+  });
 }
 
 //without retrofit, just using dio
@@ -31,4 +34,3 @@ abstract class AnimeRemote {
 // }
 ///NOTE: Not using try catch here as exception is handled in repository 
 ///for better and single point of error handling.
-

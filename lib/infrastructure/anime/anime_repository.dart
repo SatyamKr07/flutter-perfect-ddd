@@ -12,10 +12,12 @@ class AnimeRepository implements IAnimeRepository {
   AnimeRepository(this._animeRemote);
 
   @override
-  Future<Either<AppException, List<AnimeModel>>> getPopularAnime() async {
+  Future<Either<AppException, AnimeResponse>> getPopularAnime(
+      {int page = 1, int limit = 5}) async {
     try {
-      final response = await _animeRemote.getPopularAnime();
-      return right(response.data);
+      final response =
+          await _animeRemote.getPopularAnime(page: page, limit: limit);
+      return right(response);
     } on DioException catch (e) {
       return left(ErrorHandler.handleDioError(e));
     } catch (e) {

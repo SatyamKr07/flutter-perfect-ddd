@@ -19,9 +19,15 @@ class _AnimeRemote implements AnimeRemote {
   String? baseUrl;
 
   @override
-  Future<AnimeResponse> getPopularAnime() async {
+  Future<AnimeResponse> getPopularAnime({
+    int page = 1,
+    int limit = 20,
+  }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'page': page,
+      r'limit': limit,
+    };
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _result = await _dio
