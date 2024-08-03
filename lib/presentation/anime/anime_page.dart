@@ -6,8 +6,21 @@ import '../../application/my_app/my_app_state.dart';
 import '../../domain/core/models/anime/anime_model.dart';
 import '../core/components/my_cached_network_image.dart';
 
-class AnimePage extends StatelessWidget {
+class AnimePage extends StatefulWidget {
   const AnimePage({super.key});
+
+  @override
+  State<AnimePage> createState() => _AnimePageState();
+}
+
+class _AnimePageState extends State<AnimePage> {
+  final ScrollController _scrollController = ScrollController();
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +53,16 @@ class AnimePage extends StatelessWidget {
           );
         },
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          _scrollController.animateTo(
+            0,
+            duration: const Duration(milliseconds: 500),
+            curve: Curves.easeInOut,
+          );
+        },
+        child: const Icon(Icons.arrow_upward),
+      ),
     );
   }
 
@@ -50,6 +73,7 @@ class AnimePage extends StatelessWidget {
         await context.read<AnimeCubit>().getPopularAnime();
       },
       child: ListView.builder(
+        controller: _scrollController,
         itemCount: animeList.length + (hasNextPage ? 1 : 0),
         itemBuilder: (context, index) {
           if (index == animeList.length && hasNextPage) {
