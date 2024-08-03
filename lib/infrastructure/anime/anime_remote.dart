@@ -22,14 +22,13 @@ abstract class AnimeRemote {
 //   final Dio _dio = GetIt.instance<Dio>();
 
 //   Future<List<AnimeModel>> getPopularAnime() async {
-//     try {
-//       final response = await _dio.get('/top/anime');
-//       final data = response.data['data'] as List;
-//       return data
-//           .map((item) => AnimeModel.fromJson(item as Map<String, dynamic>))
-//           .toList();
-//     } catch (e) {
-//       throw Exception(e);
-//     }
+//     final response = await _dio.get('/top/anime');
+//     final data = response.data['data'] as List;
+//     return data
+//         .map((item) => AnimeModel.fromJson(item as Map<String, dynamic>))
+//         .toList();
 //   }
 // }
+///NOTE: Not using try catch here as exception is handled in repository 
+///for better and single point of error handling.
+

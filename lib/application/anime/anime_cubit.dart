@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../domain/anime/i_anime_repossitory.dart';
+import '../../domain/anime/i_anime_repository.dart';
 import '../../domain/core/models/anime/anime_model.dart';
 part 'anime_state.dart';
 part 'anime_cubit.freezed.dart';

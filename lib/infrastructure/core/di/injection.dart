@@ -2,8 +2,10 @@ import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_perfect_ddd/application/anime/anime_cubit.dart';
 import 'package:flutter_perfect_ddd/application/auth/auth_cubit.dart';
+import 'package:flutter_perfect_ddd/application/core/services/firebase/firebase_cubit.dart';
+import 'package:flutter_perfect_ddd/application/core/services/media/media_cubit.dart';
 import 'package:flutter_perfect_ddd/application/my_app/my_app_cubit.dart';
-import 'package:flutter_perfect_ddd/domain/anime/i_anime_repossitory.dart';
+import 'package:flutter_perfect_ddd/domain/anime/i_anime_repository.dart';
 import 'package:flutter_perfect_ddd/infrastructure/anime/anime_repository.dart';
 import 'package:flutter_perfect_ddd/infrastructure/auth/auth_repository.dart';
 import 'package:flutter_perfect_ddd/presentation/core/route/my_app_router.dart';
@@ -15,6 +17,8 @@ import '../../../domain/auth/i_auth_repository.dart';
 import '../../../env.dart';
 import '../../anime/anime_remote.dart';
 import '../my_enums/my_enums.dart';
+import '../services/firebase_service/firebase_service.dart';
+import '../services/media_service/media_service.dart';
 import 'injection.config.dart';
 
 final GetIt getIt = GetIt.instance;
@@ -53,5 +57,17 @@ void setupLocator() {
       () => AnimeRepository(getIt<AnimeRemote>()));
   getIt.registerLazySingleton<AnimeCubit>(
       () => AnimeCubit(getIt<IAnimeRepository>()));
+
+  ///Media 
+   getIt.registerLazySingleton<MediaCubit>(
+      () => MediaCubit(getIt<MediaService>()));
+
+  ///firebase
+  getIt.registerLazySingleton<FirebaseCubit>(
+      () => FirebaseCubit(getIt<FirebaseService>()));
+
+  ///services
+  getIt.registerSingleton<MediaService>(MediaService());
+  getIt.registerSingleton<FirebaseService>(FirebaseService());
   // Register other dependencies
 }

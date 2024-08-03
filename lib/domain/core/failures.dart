@@ -1,10 +1,9 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+class Failure {
+  final String message;
+  final String? code; // Optional error code
 
-part 'failures.freezed.dart';
+  Failure(this.message, {this.code});
 
-@freezed
-class Failure with _$Failure {
-  const factory Failure.serverError() = ServerError;
-  const factory Failure.networkError() = NetworkError;
-  const factory Failure.unexpectedError() = UnexpectedError;
+  @override
+  String toString() => 'Failure(message: $message, code: $code)';
 }

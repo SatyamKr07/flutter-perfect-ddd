@@ -12,7 +12,7 @@ import 'package:dio/dio.dart' as _i3;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
-import '../../../domain/anime/i_anime_repossitory.dart' as _i5;
+import '../../../domain/anime/i_anime_repository.dart' as _i5;
 import '../../anime/anime_remote.dart' as _i4;
 import '../../anime/anime_repository.dart' as _i6;
 import 'injectable_module.dart' as _i7;

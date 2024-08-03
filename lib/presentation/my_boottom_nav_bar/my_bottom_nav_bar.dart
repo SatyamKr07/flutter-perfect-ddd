@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_perfect_ddd/presentation/some_actions/some_actions.dart';
 import '../anime/anime_page.dart';
 import '../profile/profile_page.dart';
 
@@ -15,7 +16,7 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
   static final List<Widget> _widgetOptions = <Widget>[
     const AnimePage(),
     // NewsPage(),
-    const Text("NewsPage"),
+    SomeActions(),
     ProfilePage(),
   ];
 
