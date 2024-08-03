@@ -34,19 +34,27 @@ class AnimePage extends StatelessWidget {
             ),
           ],
         ),
-        body: BlocBuilder<AnimeCubit, AnimeState>(
+        body: BlocConsumer<AnimeCubit, AnimeState>(
+          listener: (context, state) {
+            if (state.error != null) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                    content: Text(
+                        "${state.error!.code!} : ${state.error!.message}")),
+              );
+              // Reset error message after showing
+              context.read<AnimeCubit>().clearErrorMessage();
+              // context
+              //     .read<AnimeCubit>()
+              //     .emitFromAnywhere(state.copyWith(errorMessage: null));
+            }
+          },
           builder: (context, state) {
-            return state.when(
-              initial: () {
-                return const Center(child: CircularProgressIndicator());
-              },
-              loading: () => const Center(child: CircularProgressIndicator()),
-              loadingMore: (animeList) =>
-                  _buildAnimeList(context, animeList, true),
-              success: (animeList, hasNextPage) =>
-                  _buildAnimeList(context, animeList, hasNextPage),
-              failure: (message) => Center(child: Text('Error: $message')),
-            );
+            if (state.animeList.isEmpty && state.isLoading) {
+              return const Center(child: CircularProgressIndicator());
+            }
+            return _buildAnimeList(
+                context, state.animeList, state.hasNextPage, state.isLoading);
           },
         ),
         floatingActionButton: FloatingActionButton(
@@ -63,17 +71,17 @@ class AnimePage extends StatelessWidget {
     );
   }
 
-  Widget _buildAnimeList(
-      BuildContext context, List<AnimeModel> animeList, bool hasNextPage) {
+  Widget _buildAnimeList(BuildContext context, List<AnimeModel> animeList,
+      bool hasNextPage, bool isLoading) {
     return RefreshIndicator(
       onRefresh: () async {
         await context.read<AnimeCubit>().getPopularAnime();
       },
       child: ListView.builder(
         controller: _scrollController,
-        itemCount: animeList.length + (hasNextPage ? 1 : 0),
+        itemCount: animeList.length + (hasNextPage || isLoading ? 1 : 0),
         itemBuilder: (context, index) {
-          if (index == animeList.length && hasNextPage) {
+          if (index == animeList.length && (hasNextPage || isLoading)) {
             return const Center(child: CircularProgressIndicator());
           }
           final anime = animeList[index];

@@ -16,62 +16,15 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$AnimeState {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<AnimeModel> animeList) loadingMore,
-    required TResult Function(List<AnimeModel> animeList, bool hasNextPage)
-        success,
-    required TResult Function(String message) failure,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(List<AnimeModel> animeList)? loadingMore,
-    TResult? Function(List<AnimeModel> animeList, bool hasNextPage)? success,
-    TResult? Function(String message)? failure,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<AnimeModel> animeList)? loadingMore,
-    TResult Function(List<AnimeModel> animeList, bool hasNextPage)? success,
-    TResult Function(String message)? failure,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_LoadingMore value) loadingMore,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Failure value) failure,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_LoadingMore value)? loadingMore,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Failure value)? failure,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_LoadingMore value)? loadingMore,
-    TResult Function(_Success value)? success,
-    TResult Function(_Failure value)? failure,
-    required TResult orElse(),
-  }) =>
+  int get currentPage => throw _privateConstructorUsedError;
+  int get itemsPerPage => throw _privateConstructorUsedError;
+  List<AnimeModel> get animeList => throw _privateConstructorUsedError;
+  bool get isLoading => throw _privateConstructorUsedError;
+  bool get hasNextPage => throw _privateConstructorUsedError;
+  AppException? get error => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $AnimeStateCopyWith<AnimeState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -80,6 +33,14 @@ abstract class $AnimeStateCopyWith<$Res> {
   factory $AnimeStateCopyWith(
           AnimeState value, $Res Function(AnimeState) then) =
       _$AnimeStateCopyWithImpl<$Res, AnimeState>;
+  @useResult
+  $Res call(
+      {int currentPage,
+      int itemsPerPage,
+      List<AnimeModel> animeList,
+      bool isLoading,
+      bool hasNextPage,
+      AppException? error});
 }
 
 /// @nodoc
@@ -91,455 +52,131 @@ class _$AnimeStateCopyWithImpl<$Res, $Val extends AnimeState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$InitialImplCopyWith<$Res> {
-  factory _$$InitialImplCopyWith(
-          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
-      __$$InitialImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$InitialImplCopyWithImpl<$Res>
-    extends _$AnimeStateCopyWithImpl<$Res, _$InitialImpl>
-    implements _$$InitialImplCopyWith<$Res> {
-  __$$InitialImplCopyWithImpl(
-      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$InitialImpl implements _Initial {
-  const _$InitialImpl();
-
-  @override
-  String toString() {
-    return 'AnimeState.initial()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<AnimeModel> animeList) loadingMore,
-    required TResult Function(List<AnimeModel> animeList, bool hasNextPage)
-        success,
-    required TResult Function(String message) failure,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(List<AnimeModel> animeList)? loadingMore,
-    TResult? Function(List<AnimeModel> animeList, bool hasNextPage)? success,
-    TResult? Function(String message)? failure,
-  }) {
-    return initial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<AnimeModel> animeList)? loadingMore,
-    TResult Function(List<AnimeModel> animeList, bool hasNextPage)? success,
-    TResult Function(String message)? failure,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_LoadingMore value) loadingMore,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Failure value) failure,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_LoadingMore value)? loadingMore,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Failure value)? failure,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_LoadingMore value)? loadingMore,
-    TResult Function(_Success value)? success,
-    TResult Function(_Failure value)? failure,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Initial implements AnimeState {
-  const factory _Initial() = _$InitialImpl;
-}
-
-/// @nodoc
-abstract class _$$LoadingImplCopyWith<$Res> {
-  factory _$$LoadingImplCopyWith(
-          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
-      __$$LoadingImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$AnimeStateCopyWithImpl<$Res, _$LoadingImpl>
-    implements _$$LoadingImplCopyWith<$Res> {
-  __$$LoadingImplCopyWithImpl(
-      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$LoadingImpl implements _Loading {
-  const _$LoadingImpl();
-
-  @override
-  String toString() {
-    return 'AnimeState.loading()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadingImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<AnimeModel> animeList) loadingMore,
-    required TResult Function(List<AnimeModel> animeList, bool hasNextPage)
-        success,
-    required TResult Function(String message) failure,
-  }) {
-    return loading();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(List<AnimeModel> animeList)? loadingMore,
-    TResult? Function(List<AnimeModel> animeList, bool hasNextPage)? success,
-    TResult? Function(String message)? failure,
-  }) {
-    return loading?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<AnimeModel> animeList)? loadingMore,
-    TResult Function(List<AnimeModel> animeList, bool hasNextPage)? success,
-    TResult Function(String message)? failure,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_LoadingMore value) loadingMore,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Failure value) failure,
-  }) {
-    return loading(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_LoadingMore value)? loadingMore,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Failure value)? failure,
-  }) {
-    return loading?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_LoadingMore value)? loadingMore,
-    TResult Function(_Success value)? success,
-    TResult Function(_Failure value)? failure,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Loading implements AnimeState {
-  const factory _Loading() = _$LoadingImpl;
-}
-
-/// @nodoc
-abstract class _$$LoadingMoreImplCopyWith<$Res> {
-  factory _$$LoadingMoreImplCopyWith(
-          _$LoadingMoreImpl value, $Res Function(_$LoadingMoreImpl) then) =
-      __$$LoadingMoreImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({List<AnimeModel> animeList});
-}
-
-/// @nodoc
-class __$$LoadingMoreImplCopyWithImpl<$Res>
-    extends _$AnimeStateCopyWithImpl<$Res, _$LoadingMoreImpl>
-    implements _$$LoadingMoreImplCopyWith<$Res> {
-  __$$LoadingMoreImplCopyWithImpl(
-      _$LoadingMoreImpl _value, $Res Function(_$LoadingMoreImpl) _then)
-      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? currentPage = null,
+    Object? itemsPerPage = null,
     Object? animeList = null,
-  }) {
-    return _then(_$LoadingMoreImpl(
-      null == animeList
-          ? _value._animeList
-          : animeList // ignore: cast_nullable_to_non_nullable
-              as List<AnimeModel>,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$LoadingMoreImpl implements _LoadingMore {
-  const _$LoadingMoreImpl(final List<AnimeModel> animeList)
-      : _animeList = animeList;
-
-  final List<AnimeModel> _animeList;
-  @override
-  List<AnimeModel> get animeList {
-    if (_animeList is EqualUnmodifiableListView) return _animeList;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_animeList);
-  }
-
-  @override
-  String toString() {
-    return 'AnimeState.loadingMore(animeList: $animeList)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$LoadingMoreImpl &&
-            const DeepCollectionEquality()
-                .equals(other._animeList, _animeList));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_animeList));
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$LoadingMoreImplCopyWith<_$LoadingMoreImpl> get copyWith =>
-      __$$LoadingMoreImplCopyWithImpl<_$LoadingMoreImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<AnimeModel> animeList) loadingMore,
-    required TResult Function(List<AnimeModel> animeList, bool hasNextPage)
-        success,
-    required TResult Function(String message) failure,
-  }) {
-    return loadingMore(animeList);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(List<AnimeModel> animeList)? loadingMore,
-    TResult? Function(List<AnimeModel> animeList, bool hasNextPage)? success,
-    TResult? Function(String message)? failure,
-  }) {
-    return loadingMore?.call(animeList);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<AnimeModel> animeList)? loadingMore,
-    TResult Function(List<AnimeModel> animeList, bool hasNextPage)? success,
-    TResult Function(String message)? failure,
-    required TResult orElse(),
-  }) {
-    if (loadingMore != null) {
-      return loadingMore(animeList);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_LoadingMore value) loadingMore,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Failure value) failure,
-  }) {
-    return loadingMore(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_LoadingMore value)? loadingMore,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Failure value)? failure,
-  }) {
-    return loadingMore?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_LoadingMore value)? loadingMore,
-    TResult Function(_Success value)? success,
-    TResult Function(_Failure value)? failure,
-    required TResult orElse(),
-  }) {
-    if (loadingMore != null) {
-      return loadingMore(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _LoadingMore implements AnimeState {
-  const factory _LoadingMore(final List<AnimeModel> animeList) =
-      _$LoadingMoreImpl;
-
-  List<AnimeModel> get animeList;
-  @JsonKey(ignore: true)
-  _$$LoadingMoreImplCopyWith<_$LoadingMoreImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$SuccessImplCopyWith<$Res> {
-  factory _$$SuccessImplCopyWith(
-          _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
-      __$$SuccessImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({List<AnimeModel> animeList, bool hasNextPage});
-}
-
-/// @nodoc
-class __$$SuccessImplCopyWithImpl<$Res>
-    extends _$AnimeStateCopyWithImpl<$Res, _$SuccessImpl>
-    implements _$$SuccessImplCopyWith<$Res> {
-  __$$SuccessImplCopyWithImpl(
-      _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? animeList = null,
+    Object? isLoading = null,
     Object? hasNextPage = null,
+    Object? error = freezed,
   }) {
-    return _then(_$SuccessImpl(
-      null == animeList
-          ? _value._animeList
+    return _then(_value.copyWith(
+      currentPage: null == currentPage
+          ? _value.currentPage
+          : currentPage // ignore: cast_nullable_to_non_nullable
+              as int,
+      itemsPerPage: null == itemsPerPage
+          ? _value.itemsPerPage
+          : itemsPerPage // ignore: cast_nullable_to_non_nullable
+              as int,
+      animeList: null == animeList
+          ? _value.animeList
           : animeList // ignore: cast_nullable_to_non_nullable
               as List<AnimeModel>,
-      null == hasNextPage
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      hasNextPage: null == hasNextPage
           ? _value.hasNextPage
           : hasNextPage // ignore: cast_nullable_to_non_nullable
               as bool,
+      error: freezed == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as AppException?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$AnimeStateImplCopyWith<$Res>
+    implements $AnimeStateCopyWith<$Res> {
+  factory _$$AnimeStateImplCopyWith(
+          _$AnimeStateImpl value, $Res Function(_$AnimeStateImpl) then) =
+      __$$AnimeStateImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {int currentPage,
+      int itemsPerPage,
+      List<AnimeModel> animeList,
+      bool isLoading,
+      bool hasNextPage,
+      AppException? error});
+}
+
+/// @nodoc
+class __$$AnimeStateImplCopyWithImpl<$Res>
+    extends _$AnimeStateCopyWithImpl<$Res, _$AnimeStateImpl>
+    implements _$$AnimeStateImplCopyWith<$Res> {
+  __$$AnimeStateImplCopyWithImpl(
+      _$AnimeStateImpl _value, $Res Function(_$AnimeStateImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? currentPage = null,
+    Object? itemsPerPage = null,
+    Object? animeList = null,
+    Object? isLoading = null,
+    Object? hasNextPage = null,
+    Object? error = freezed,
+  }) {
+    return _then(_$AnimeStateImpl(
+      currentPage: null == currentPage
+          ? _value.currentPage
+          : currentPage // ignore: cast_nullable_to_non_nullable
+              as int,
+      itemsPerPage: null == itemsPerPage
+          ? _value.itemsPerPage
+          : itemsPerPage // ignore: cast_nullable_to_non_nullable
+              as int,
+      animeList: null == animeList
+          ? _value._animeList
+          : animeList // ignore: cast_nullable_to_non_nullable
+              as List<AnimeModel>,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      hasNextPage: null == hasNextPage
+          ? _value.hasNextPage
+          : hasNextPage // ignore: cast_nullable_to_non_nullable
+              as bool,
+      error: freezed == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as AppException?,
     ));
   }
 }
 
 /// @nodoc
 
-class _$SuccessImpl implements _Success {
-  const _$SuccessImpl(final List<AnimeModel> animeList, this.hasNextPage)
+class _$AnimeStateImpl implements _AnimeState {
+  const _$AnimeStateImpl(
+      {this.currentPage = 1,
+      this.itemsPerPage = 5,
+      final List<AnimeModel> animeList = const [],
+      this.isLoading = false,
+      this.hasNextPage = true,
+      this.error})
       : _animeList = animeList;
 
+  @override
+  @JsonKey()
+  final int currentPage;
+  @override
+  @JsonKey()
+  final int itemsPerPage;
   final List<AnimeModel> _animeList;
   @override
+  @JsonKey()
   List<AnimeModel> get animeList {
     if (_animeList is EqualUnmodifiableListView) return _animeList;
     // ignore: implicit_dynamic_type
@@ -547,275 +184,77 @@ class _$SuccessImpl implements _Success {
   }
 
   @override
+  @JsonKey()
+  final bool isLoading;
+  @override
+  @JsonKey()
   final bool hasNextPage;
+  @override
+  final AppException? error;
 
   @override
   String toString() {
-    return 'AnimeState.success(animeList: $animeList, hasNextPage: $hasNextPage)';
+    return 'AnimeState(currentPage: $currentPage, itemsPerPage: $itemsPerPage, animeList: $animeList, isLoading: $isLoading, hasNextPage: $hasNextPage, error: $error)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SuccessImpl &&
+            other is _$AnimeStateImpl &&
+            (identical(other.currentPage, currentPage) ||
+                other.currentPage == currentPage) &&
+            (identical(other.itemsPerPage, itemsPerPage) ||
+                other.itemsPerPage == itemsPerPage) &&
             const DeepCollectionEquality()
                 .equals(other._animeList, _animeList) &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading) &&
             (identical(other.hasNextPage, hasNextPage) ||
-                other.hasNextPage == hasNextPage));
+                other.hasNextPage == hasNextPage) &&
+            (identical(other.error, error) || other.error == error));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_animeList), hasNextPage);
+  int get hashCode => Object.hash(
+      runtimeType,
+      currentPage,
+      itemsPerPage,
+      const DeepCollectionEquality().hash(_animeList),
+      isLoading,
+      hasNextPage,
+      error);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
-      __$$SuccessImplCopyWithImpl<_$SuccessImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<AnimeModel> animeList) loadingMore,
-    required TResult Function(List<AnimeModel> animeList, bool hasNextPage)
-        success,
-    required TResult Function(String message) failure,
-  }) {
-    return success(animeList, hasNextPage);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(List<AnimeModel> animeList)? loadingMore,
-    TResult? Function(List<AnimeModel> animeList, bool hasNextPage)? success,
-    TResult? Function(String message)? failure,
-  }) {
-    return success?.call(animeList, hasNextPage);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<AnimeModel> animeList)? loadingMore,
-    TResult Function(List<AnimeModel> animeList, bool hasNextPage)? success,
-    TResult Function(String message)? failure,
-    required TResult orElse(),
-  }) {
-    if (success != null) {
-      return success(animeList, hasNextPage);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_LoadingMore value) loadingMore,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Failure value) failure,
-  }) {
-    return success(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_LoadingMore value)? loadingMore,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Failure value)? failure,
-  }) {
-    return success?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_LoadingMore value)? loadingMore,
-    TResult Function(_Success value)? success,
-    TResult Function(_Failure value)? failure,
-    required TResult orElse(),
-  }) {
-    if (success != null) {
-      return success(this);
-    }
-    return orElse();
-  }
+  _$$AnimeStateImplCopyWith<_$AnimeStateImpl> get copyWith =>
+      __$$AnimeStateImplCopyWithImpl<_$AnimeStateImpl>(this, _$identity);
 }
 
-abstract class _Success implements AnimeState {
-  const factory _Success(
-      final List<AnimeModel> animeList, final bool hasNextPage) = _$SuccessImpl;
+abstract class _AnimeState implements AnimeState {
+  const factory _AnimeState(
+      {final int currentPage,
+      final int itemsPerPage,
+      final List<AnimeModel> animeList,
+      final bool isLoading,
+      final bool hasNextPage,
+      final AppException? error}) = _$AnimeStateImpl;
 
+  @override
+  int get currentPage;
+  @override
+  int get itemsPerPage;
+  @override
   List<AnimeModel> get animeList;
+  @override
+  bool get isLoading;
+  @override
   bool get hasNextPage;
+  @override
+  AppException? get error;
+  @override
   @JsonKey(ignore: true)
-  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$FailureImplCopyWith<$Res> {
-  factory _$$FailureImplCopyWith(
-          _$FailureImpl value, $Res Function(_$FailureImpl) then) =
-      __$$FailureImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String message});
-}
-
-/// @nodoc
-class __$$FailureImplCopyWithImpl<$Res>
-    extends _$AnimeStateCopyWithImpl<$Res, _$FailureImpl>
-    implements _$$FailureImplCopyWith<$Res> {
-  __$$FailureImplCopyWithImpl(
-      _$FailureImpl _value, $Res Function(_$FailureImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? message = null,
-  }) {
-    return _then(_$FailureImpl(
-      null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$FailureImpl implements _Failure {
-  const _$FailureImpl(this.message);
-
-  @override
-  final String message;
-
-  @override
-  String toString() {
-    return 'AnimeState.failure(message: $message)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$FailureImpl &&
-            (identical(other.message, message) || other.message == message));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, message);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$FailureImplCopyWith<_$FailureImpl> get copyWith =>
-      __$$FailureImplCopyWithImpl<_$FailureImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<AnimeModel> animeList) loadingMore,
-    required TResult Function(List<AnimeModel> animeList, bool hasNextPage)
-        success,
-    required TResult Function(String message) failure,
-  }) {
-    return failure(message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(List<AnimeModel> animeList)? loadingMore,
-    TResult? Function(List<AnimeModel> animeList, bool hasNextPage)? success,
-    TResult? Function(String message)? failure,
-  }) {
-    return failure?.call(message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<AnimeModel> animeList)? loadingMore,
-    TResult Function(List<AnimeModel> animeList, bool hasNextPage)? success,
-    TResult Function(String message)? failure,
-    required TResult orElse(),
-  }) {
-    if (failure != null) {
-      return failure(message);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_LoadingMore value) loadingMore,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Failure value) failure,
-  }) {
-    return failure(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_LoadingMore value)? loadingMore,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Failure value)? failure,
-  }) {
-    return failure?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_LoadingMore value)? loadingMore,
-    TResult Function(_Success value)? success,
-    TResult Function(_Failure value)? failure,
-    required TResult orElse(),
-  }) {
-    if (failure != null) {
-      return failure(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Failure implements AnimeState {
-  const factory _Failure(final String message) = _$FailureImpl;
-
-  String get message;
-  @JsonKey(ignore: true)
-  _$$FailureImplCopyWith<_$FailureImpl> get copyWith =>
+  _$$AnimeStateImplCopyWith<_$AnimeStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
