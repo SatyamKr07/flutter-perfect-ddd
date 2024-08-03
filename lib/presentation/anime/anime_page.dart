@@ -31,26 +31,31 @@ class AnimePage extends StatelessWidget {
               return const Center(child: CircularProgressIndicator());
             },
             loading: () => const Center(child: CircularProgressIndicator()),
-            success: (animeList) => ListView.builder(
-              shrinkWrap: true,
-              itemCount: animeList.length,
-              itemBuilder: (context, index) {
-                final anime = animeList[index];
-                return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                  child: Column(
-                    children: [
-                      MyCachedNetworkImage(imageUrl: anime.images.jpg.imageUrl),
-                      ListTile(
-                        contentPadding: const EdgeInsets.all(0),
-                        title: Text(anime.title),
-                        subtitle: Text(anime.url),
-                      ),
-                      const Divider(),
-                    ],
-                  ),
-                );
+            success: (animeList) => RefreshIndicator(
+              onRefresh: () async {
+                await context.read<AnimeCubit>().getPopularAnime();
               },
+              child: ListView.builder(
+                shrinkWrap: true,
+                itemCount: animeList.length,
+                itemBuilder: (context, index) {
+                  final anime = animeList[index];
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                    child: Column(
+                      children: [
+                        MyCachedNetworkImage(imageUrl: anime.images.jpg.imageUrl),
+                        ListTile(
+                          contentPadding: const EdgeInsets.all(0),
+                          title: Text(anime.title),
+                          subtitle: Text(anime.url),
+                        ),
+                        const Divider(),
+                      ],
+                    ),
+                  );
+                },
+              ),
             ),
             failure: (message) => Center(child: Text('Error: $message')),
           );
