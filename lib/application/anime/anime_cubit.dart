@@ -1,3 +1,4 @@
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import '../../domain/anime/i_anime_repository.dart';
@@ -13,6 +14,16 @@ class AnimeCubit extends Cubit<AnimeState> {
   bool _isLoading = false;
 
   AnimeCubit(this._animeRepository) : super(const AnimeState.initial());
+
+  void initialize(ScrollController scrollController) {
+    getPopularAnime();
+    scrollController.addListener(() {
+      if (scrollController.position.pixels ==
+          scrollController.position.maxScrollExtent) {
+        getPopularAnime(loadMore: true);
+      }
+    });
+  }
 
   Future<void> getPopularAnime({bool loadMore = false}) async {
     if (_isLoading) return;

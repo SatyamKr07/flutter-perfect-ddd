@@ -4,9 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_perfect_ddd/application/auth/auth_cubit.dart';
 import 'package:flutter_perfect_ddd/application/my_app/my_app_cubit.dart';
 import 'package:flutter_perfect_ddd/presentation/core/route/my_app_router.dart';
-import '../../application/my_app/my_app_state.dart';
-import '../../infrastructure/core/di/injection.dart';
-import 'theme/my_app_theme.dart'; // Import your theme definitions
+import '../application/my_app/my_app_state.dart';
+import '../infrastructure/core/di/injection.dart';
+import 'core/theme/my_app_theme.dart'; // Import your theme definitions
 
 class MyApp extends StatelessWidget {
   @override

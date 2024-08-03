@@ -14,7 +14,7 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
   int _selectedIndex = 0;
 
   static final List<Widget> _widgetOptions = <Widget>[
-    const AnimePage(),
+     AnimePage(),
     // NewsPage(),
     SomeActions(),
     ProfilePage(),
