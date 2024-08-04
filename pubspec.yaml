@@ -43,6 +43,10 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
+  assets:
+    - assets/
+    - assets/tutorial_data.json
+
   # Define entry points for different environments
   # targets:
   #   $default:

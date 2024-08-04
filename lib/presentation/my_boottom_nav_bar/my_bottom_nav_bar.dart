@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_perfect_ddd/presentation/some_actions/some_actions.dart';
 import '../anime/anime_page.dart';
+import '../fly_with_flutter/fly_with_flutter.dart';
 import '../profile/profile_page.dart';
 
 class MyBottomNavBar extends StatefulWidget {
@@ -16,7 +17,8 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
   // Create instances once
   final List<Widget> _widgetOptions = <Widget>[
     const AnimePage(),
-    SomeActions(),
+    SomeActons(),
+    FlyWithFlutter(),
     ProfilePage(),
   ];
 
@@ -41,7 +43,11 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.article),
-            label: 'News',
+            label: 'Some Actions',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.flight),
+            label: 'Fly With Flutter',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),

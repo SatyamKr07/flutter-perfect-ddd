@@ -8,7 +8,7 @@ import '../../application/core/services/firebase/firebase_state.dart';
 import '../../application/core/services/media/media_cubit.dart';
 import '../../application/core/services/media/media_state.dart';
 
-class SomeActions extends StatelessWidget {
+class SomeActons extends StatelessWidget {
   final MediaCubit _mediaCubit = GetIt.I<MediaCubit>();
   final FirebaseCubit _firebaseCubit = GetIt.I<FirebaseCubit>();
 
@@ -28,8 +28,10 @@ class SomeActions extends StatelessWidget {
             state.mediaOption.fold(
               () => {},
               (either) => either.fold(
-                (failure) => Fluttertoast.showToast(msg: 'Failed to upload media'),
-                (media) => Fluttertoast.showToast(msg: 'Media uploaded successfully'),
+                (failure) =>
+                    Fluttertoast.showToast(msg: 'Failed to upload media'),
+                (media) =>
+                    Fluttertoast.showToast(msg: 'Media uploaded successfully'),
               ),
             );
           },
@@ -50,11 +52,13 @@ class SomeActions extends StatelessWidget {
                             spacing: 8.0,
                             runSpacing: 8.0,
                             children: mediaState.selectedImages
-                                .map((path) => Image.file(File(path), width: 100, height: 100))
+                                .map((path) => Image.file(File(path),
+                                    width: 100, height: 100))
                                 .toList(),
                           ),
                           ElevatedButton(
-                            onPressed: () => _firebaseCubit.uploadImages(mediaState.selectedImages),
+                            onPressed: () => _firebaseCubit
+                                .uploadImages(mediaState.selectedImages),
                             child: Text('Upload Images'),
                           ),
                         ],
@@ -72,7 +76,8 @@ class SomeActions extends StatelessWidget {
                     spacing: 8.0,
                     runSpacing: 8.0,
                     children: state.uploadedMedia
-                        .map((media) => Image.network(media.url, width: 100, height: 100))
+                        .map((media) =>
+                            Image.network(media.url, width: 100, height: 100))
                         .toList(),
                   ),
                 ],
