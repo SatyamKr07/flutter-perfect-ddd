@@ -37,7 +37,8 @@ class AnimeCubit extends Cubit<AnimeState> {
         hasNextPage: false,
       )),
       (data) {
-        final newAnimeList = [...state.animeList, ...data.data];
+        final newAnimeList =
+            loadMore ? [...state.animeList, ...data.data] : [...data.data];
         emit(state.copyWith(
           isLoading: false,
           currentPage: state.currentPage + 1,
