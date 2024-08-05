@@ -1,5 +1,5 @@
 
-import '0_core/my_enums/my_enums.dart';
+import '_core/my_enums/my_enums.dart';
 
 class Env {
   static late EnumEnv _env;

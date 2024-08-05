@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_perfect_ddd/domain/core/models/media/media_model.dart';
 import 'package:fpdart/fpdart.dart';
 import '../../../../domain/core/failures.dart';
-import '../../../../0_core/services/firebase_service/firebase_service.dart';
+import '../../../../_core/services/firebase_service/firebase_service.dart';
 import 'firebase_state.dart';
 
 class FirebaseCubit extends Cubit<FirebaseState> {
