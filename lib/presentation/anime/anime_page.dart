@@ -5,9 +5,9 @@ import '../../application/my_app/my_app_cubit.dart';
 import '../../application/my_app/my_app_state.dart';
 import '../../domain/anime/i_anime_repository.dart';
 import '../../domain/core/models/anime/anime_model.dart';
-import '../../infrastructure/core/di/injection.dart';
-import '../core/components/my_cached_network_image.dart';
-import '../core/components/my_scroll_controller_provider.dart';
+import '../../0_di/injection.dart';
+import '../../0_core/components/my_cached_network_image.dart';
+import '../../0_core/components/my_scroll_controller_provider.dart';
 
 class AnimePage extends StatefulWidget {
   const AnimePage({super.key});

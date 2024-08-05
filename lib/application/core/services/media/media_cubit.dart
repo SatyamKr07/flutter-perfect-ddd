@@ -1,6 +1,6 @@
 // application/media/media_cubit.dart
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../infrastructure/core/services/media_service/media_service.dart';
+import '../../../../0_core/services/media_service/media_service.dart';
 import 'media_state.dart';
 
 class MediaCubit extends Cubit<MediaState> {
