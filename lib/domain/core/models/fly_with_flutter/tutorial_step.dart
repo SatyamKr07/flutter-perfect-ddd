@@ -36,6 +36,28 @@ class TutorialStep {
       comments: List<String>.from(json['comments'] ?? []),
     );
   }
+
+  TutorialStep copyWith({
+    String? id,
+    String? title,
+    String? description,
+    String? link,
+    List<TutorialStep>? subSteps,
+    bool? isCompleted,
+    int? likes,
+    List<String>? comments,
+  }) {
+    return TutorialStep(
+      id: id ?? this.id,
+      title: title ?? this.title,
+      description: description ?? this.description,
+      link: link ?? this.link,
+      subSteps: subSteps ?? this.subSteps,
+      isCompleted: isCompleted ?? this.isCompleted,
+      likes: likes ?? this.likes,
+      comments: comments ?? this.comments,
+    );
+  }
 }
 
 class TutorialData {
