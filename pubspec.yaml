@@ -29,6 +29,8 @@ dependencies:
   path: ^1.9.0
   retrofit: ^4.1.0
   shimmer: ^3.0.0
+  widgetbook: ^3.7.1
+  widgetbook_annotation: ^3.1.0
 
 dev_dependencies:
   flutter_test:
@@ -39,6 +41,7 @@ dev_dependencies:
   retrofit_generator: ^8.1.1
   injectable_generator: ^2.6.1
   json_serializable: ^6.8.0
+  widgetbook_generator: ^3.7.0
 
 flutter:
   uses-material-design: true

@@ -1,6 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:widgetbook/widgetbook.dart';
+import 'package:widgetbook_annotation/widgetbook_annotation.dart';
+
+@UseCase(name: 'Default', type: MyCachedNetworkImage)
+Widget defaultMyCachedNetworkImage(BuildContext context) {
+  return MyCachedNetworkImage(
+    imageUrl: context.knobs.string(
+      label: 'Image URL',
+      initialValue: 'https://picsum.photos/200/300',
+    ),
+    height: context.knobs.double.slider(
+      label: 'Height',
+      initialValue: 0,
+      min: 0,
+      max: 500,
+    ),
+  );
+}
 
 class MyCachedNetworkImage extends StatelessWidget {
   final String imageUrl;

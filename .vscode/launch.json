@@ -18,6 +18,12 @@
             "request": "launch",
             "type": "dart",
             "program": "lib/main_prod.dart"
+        },
+        {
+            "name": "Widgetbook",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main_widgetbook.dart"
         }
     ]
 }
