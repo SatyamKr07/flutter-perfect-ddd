@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
-import '_core/components/my_cached_network_image.dart';
 import 'widgetbook/button_use_cases.dart';
+import 'widgetbook/my_cached_network_use_cases.dart';
 
 void main() {
   runApp(const WidgetbookApp());
