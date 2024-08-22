@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import '../../_route/route_names.dart';
 import '../../application/anime/anime_cubit.dart';
 import '../../application/my_app/my_app_cubit.dart';
 import '../../application/my_app/my_app_state.dart';
@@ -116,18 +118,24 @@ class AnimeListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-      child: Column(
-        children: [
-          MyCachedNetworkImage(imageUrl: anime.images.jpg.imageUrl),
-          ListTile(
-            contentPadding: const EdgeInsets.all(0),
-            title: Text(anime.title),
-            subtitle: Text(anime.url),
-          ),
-          const Divider(),
-        ],
+    return GestureDetector(
+      onTap: () {
+        context.push(RouteNames.animeDetailsPage,
+            extra: anime); // Use GoRouter for navigation
+      },
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        child: Column(
+          children: [
+            MyCachedNetworkImage(imageUrl: anime.images.jpg.imageUrl),
+            ListTile(
+              contentPadding: const EdgeInsets.all(0),
+              title: Text(anime.title),
+              subtitle: Text(anime.url),
+            ),
+            const Divider(),
+          ],
+        ),
       ),
     );
   }

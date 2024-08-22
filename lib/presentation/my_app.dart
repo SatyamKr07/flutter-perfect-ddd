@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
                 : ThemeMode.light,
             theme: MyAppTheme.lightTheme, // Default light theme
             darkTheme: MyAppTheme.darkTheme, // Dark theme
-            routerConfig: MyAppRouter.router,
+            routerConfig: MyAppRouter.router, // Use the GoRouter configuration
           );
         },
       ),

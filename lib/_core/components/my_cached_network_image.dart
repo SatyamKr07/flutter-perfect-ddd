@@ -26,7 +26,7 @@ class MyCachedNetworkImage extends StatelessWidget {
         highlightColor: Colors.grey[100]!,
         child: Container(
           height: height > 0 ? height : defaultHeight,
-          color: Colors.white,
+          color: Colors.grey,
         ),
       ),
       errorWidget: (context, url, error) => Container(

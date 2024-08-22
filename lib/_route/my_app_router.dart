@@ -5,7 +5,10 @@ import 'package:flutter_perfect_ddd/presentation/auth/sign_in_page.dart';
 import 'package:flutter_perfect_ddd/presentation/auth/splash_page.dart';
 import 'package:flutter_perfect_ddd/_route/route_names.dart';
 import 'package:flutter_perfect_ddd/presentation/my_boottom_nav_bar/my_bottom_nav_bar.dart';
+import 'package:flutter_perfect_ddd/presentation/anime/anime_details_page.dart'; // Import the details page
 import 'package:go_router/go_router.dart';
+
+import '../domain/core/models/anime/anime_model.dart';
 
 class MyAppRouter {
   static final router = GoRouter(
@@ -24,6 +27,14 @@ class MyAppRouter {
           create: (context) => getIt<AnimeCubit>(),
           child: const MyBottomNavBar(),
         ),
+      ),
+      GoRoute(
+        path: RouteNames.animeDetailsPage, // Added route for anime details
+        builder: (context, state) {
+          final anime = state.extra
+              as AnimeModel; // Ensure you're passing AnimeModel in extra
+          return AnimeDetailsPage(anime:anime);
+        },
       ),
       // Add more routes here
     ],
