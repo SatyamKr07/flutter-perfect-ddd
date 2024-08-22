@@ -2,85 +2,92 @@ import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../services/my_logger.dart';
 
-class AppException {
+class AppError {
   final String message;
   final String? code;
 
-  AppException(this.message, {this.code});
+  AppError(this.message, {this.code});
 }
 
-class ErrorHandler {
-  static AppException handleError(Response response) {
+class AppErrorHandler {
+  static AppError handleError(Response response) {
     logger.e(response);
     switch (response.statusCode) {
       case 401:
-        return AppException('Unauthorized', code: 'E401');
+        return AppError('Unauthorized', code: 'E401');
       case 404:
-        return AppException('Not Found', code: 'E404');
+        return AppError('Not Found', code: 'E404');
       default:
-        return AppException('Server Error', code: 'E500');
+        return AppError('Server Error', code: 'E500');
     }
   }
 
-  static AppException handleDioError(DioException error) {
+  static AppError handleDioError(DioException error) {
     logger.e(error);
     switch (error.type) {
       case DioExceptionType.connectionTimeout:
       case DioExceptionType.sendTimeout:
       case DioExceptionType.receiveTimeout:
-        return AppException('Network Timeout', code: 'E001');
+        return AppError('Network Timeout', code: 'E001');
       case DioExceptionType.badResponse:
         return handleError(error.response!);
       case DioExceptionType.cancel:
-        return AppException('Request Cancelled', code: 'E002');
+        return AppError('Request Cancelled', code: 'E002');
       case DioExceptionType.unknown:
-        return AppException('Unknown Dio Error', code: 'E003');
+        return AppError('Unknown Dio Error', code: 'E003');
       case DioExceptionType.badCertificate:
-        return AppException('Bad Certificate', code: 'E004');
+        return AppError('Bad Certificate', code: 'E004');
       case DioExceptionType.connectionError:
-        return AppException('Connection Error', code: 'E005');
+        return AppError('Connection Error', code: 'E005');
     }
   }
 
-  static AppException handleNetworkError(dynamic error) {
+  static AppError handleNetworkError(dynamic error) {
     logger.e(error);
-    return AppException('Network Error', code: 'E006');
+    return AppError('Network Error', code: 'E006');
   }
 
-  static AppException handleUnknownError(String error) {
+  static AppError handleUnknownError(String error) {
     logger.e(error);
-    return AppException('Unknown Error: $error', code: 'E007');
+    return AppError('Unknown Error: $error', code: 'E007');
   }
 
-  static AppException cancelledByUser() {
+  static AppError cancelledByUser() {
     logger.e("cancelledByUser");
-    return AppException('Sign in cancelled by user', code: 'E008');
+    return AppError('Sign in cancelled by user', code: 'E008');
   }
 
-  static AppException handleFirebaseAuthError(FirebaseAuthException e) {
+  static AppError handleFirebaseAuthError(FirebaseAuthException e) {
     logger.e(e);
     switch (e.code) {
       case 'account-exists-with-different-credential':
-        return AppException(
-            'An account already exists with the same email address but different sign-in credentials.');
+        return AppError(
+            'An account already exists with the same email address but different sign-in credentials.',
+            code: '${e.code}\n${e.message}');
       case 'invalid-credential':
-        return AppException('The credential is malformed or has expired.');
+        return AppError('The credential is malformed or has expired.',
+            code: '${e.code}\n${e.message}');
       case 'operation-not-allowed':
-        return AppException('Google sign-in is not enabled for this project.');
+        return AppError('Google sign-in is not enabled for this project.',
+            code: '${e.code}\n${e.message}');
       case 'user-disabled':
-        return AppException('The user account has been disabled.');
+        return AppError('The user account has been disabled.',
+            code: '${e.code}\n${e.message}');
       case 'user-not-found':
-        return AppException('No user found for that email.');
+        return AppError('No user found for that email.',
+            code: '${e.code}\n${e.message}');
       case 'wrong-password':
-        return AppException('Wrong password provided for that user.');
+        return AppError('Wrong password provided for that user.',
+            code: '${e.code}\n${e.message}');
       case 'invalid-verification-code':
-        return AppException(
-            'The credential verification code received is invalid.');
+        return AppError('The credential verification code received is invalid.',
+            code: '${e.code}\n${e.message}');
       case 'invalid-verification-id':
-        return AppException(
-            'The credential verification ID received is invalid.');
+        return AppError('The credential verification ID received is invalid.',
+            code: '${e.code}\n${e.message}');
       default:
-        return AppException('An unknown error occurred: ${e.message}');
+        return AppError('An unknown error occurred',
+            code: '${e.code}\n${e.message}');
     }
   }
 }

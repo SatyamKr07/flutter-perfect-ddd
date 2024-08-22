@@ -21,7 +21,7 @@ mixin _$AnimeState {
   List<AnimeModel> get animeList => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
   bool get hasNextPage => throw _privateConstructorUsedError;
-  AppException? get error => throw _privateConstructorUsedError;
+  AppError? get error => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AnimeStateCopyWith<AnimeState> get copyWith =>
@@ -40,7 +40,7 @@ abstract class $AnimeStateCopyWith<$Res> {
       List<AnimeModel> animeList,
       bool isLoading,
       bool hasNextPage,
-      AppException? error});
+      AppError? error});
 }
 
 /// @nodoc
@@ -87,7 +87,7 @@ class _$AnimeStateCopyWithImpl<$Res, $Val extends AnimeState>
       error: freezed == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
-              as AppException?,
+              as AppError?,
     ) as $Val);
   }
 }
@@ -106,7 +106,7 @@ abstract class _$$AnimeStateImplCopyWith<$Res>
       List<AnimeModel> animeList,
       bool isLoading,
       bool hasNextPage,
-      AppException? error});
+      AppError? error});
 }
 
 /// @nodoc
@@ -151,7 +151,7 @@ class __$$AnimeStateImplCopyWithImpl<$Res>
       error: freezed == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
-              as AppException?,
+              as AppError?,
     ));
   }
 }
@@ -190,7 +190,7 @@ class _$AnimeStateImpl implements _AnimeState {
   @JsonKey()
   final bool hasNextPage;
   @override
-  final AppException? error;
+  final AppError? error;
 
   @override
   String toString() {
@@ -239,7 +239,7 @@ abstract class _AnimeState implements AnimeState {
       final List<AnimeModel> animeList,
       final bool isLoading,
       final bool hasNextPage,
-      final AppException? error}) = _$AnimeStateImpl;
+      final AppError? error}) = _$AnimeStateImpl;
 
   @override
   int get currentPage;
@@ -252,7 +252,7 @@ abstract class _AnimeState implements AnimeState {
   @override
   bool get hasNextPage;
   @override
-  AppException? get error;
+  AppError? get error;
   @override
   @JsonKey(ignore: true)
   _$$AnimeStateImplCopyWith<_$AnimeStateImpl> get copyWith =>

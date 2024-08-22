@@ -8,6 +8,6 @@ class AnimeState with _$AnimeState {
     @Default([]) List<AnimeModel> animeList,
     @Default(false) bool isLoading,
     @Default(true) bool hasNextPage,
-    AppException? error,
+    AppError? error,
   }) = _AnimeState;
 }

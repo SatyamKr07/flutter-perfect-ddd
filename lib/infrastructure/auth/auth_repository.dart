@@ -19,11 +19,11 @@ class AuthRepository implements IAuthRepository {
       FirebaseAuth.instance.authStateChanges();
 
   @override
-  Future<Either<AppException, User>> signInWithGoogle() async {
+  Future<Either<AppError, User>> signInWithGoogle() async {
     try {
       final googleUser = await _googleSignIn.signIn();
       if (googleUser == null) {
-        return left(ErrorHandler.cancelledByUser());
+        return left(AppErrorHandler.cancelledByUser());
       }
       final googleAuth = await googleUser.authentication;
       final authCredential = GoogleAuthProvider.credential(
@@ -35,10 +35,10 @@ class AuthRepository implements IAuthRepository {
             await _firebaseAuth.signInWithCredential(authCredential);
         return right(userCredential.user!);
       } on FirebaseAuthException catch (e) {
-        return left(ErrorHandler.handleFirebaseAuthError(e));
+        return left(AppErrorHandler.handleFirebaseAuthError(e));
       }
     } on Exception catch (e) {
-      return left(ErrorHandler.handleUnknownError(e.toString()));
+      return left(AppErrorHandler.handleUnknownError(e.toString()));
     }
   }
 
