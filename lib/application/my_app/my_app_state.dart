@@ -1,4 +1,4 @@
-import '../../domain/core/models/user/user_model.dart';
+import '../../domain/models/user/user_model.dart';
 enum ThemeModeType { light, dark }
 
 class MyAppState {

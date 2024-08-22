@@ -2,9 +2,9 @@ import 'package:dio/dio.dart';
 import 'package:flutter_perfect_ddd/infrastructure/anime/anime_remote.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:injectable/injectable.dart';
-import '../../domain/anime/i_anime_repository.dart';
-import '../../domain/core/errors/error_handler.dart';
-import '../../domain/core/models/anime/anime_model.dart';
+import '../../domain/i_repositories/anime/i_anime_repository.dart';
+import '../../_core/errors/error_handler.dart';
+import '../../domain/models/anime/anime_model.dart';
 
 @LazySingleton(as: IAnimeRepository)
 class AnimeRepository implements IAnimeRepository {

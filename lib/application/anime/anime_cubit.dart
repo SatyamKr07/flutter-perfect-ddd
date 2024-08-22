@@ -1,9 +1,9 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_perfect_ddd/domain/core/errors/error_handler.dart';
+import 'package:flutter_perfect_ddd/_core/errors/error_handler.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../domain/anime/i_anime_repository.dart';
-import '../../domain/core/models/anime/anime_model.dart';
+import '../../domain/i_repositories/anime/i_anime_repository.dart';
+import '../../domain/models/anime/anime_model.dart';
 part 'anime_state.dart';
 part 'anime_cubit.freezed.dart';
 

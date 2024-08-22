@@ -1,8 +1,8 @@
 // application/firebase/firebase_state.dart
-import 'package:flutter_perfect_ddd/domain/core/models/media/media_model.dart';
+import 'package:flutter_perfect_ddd/domain/models/media/media_model.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../../../domain/core/failures.dart';
+import '../../../../_core/errors/failures.dart';
 
 part 'firebase_state.freezed.dart';
 

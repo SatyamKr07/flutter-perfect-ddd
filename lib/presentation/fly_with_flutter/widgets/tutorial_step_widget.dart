@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../application/fly_with_flutter/fly_with_flutter_cubit.dart';
-import '../../../domain/core/models/fly_with_flutter/tutorial_step.dart';
+import '../../../domain/models/fly_with_flutter/tutorial_step.dart';
 
 class TutorialStepWidget extends StatelessWidget {
   final TutorialStep step;

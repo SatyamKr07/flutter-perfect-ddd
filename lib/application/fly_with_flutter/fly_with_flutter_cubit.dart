@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../domain/core/models/fly_with_flutter/tutorial_step.dart';
+import '../../domain/models/fly_with_flutter/tutorial_step.dart';
 import '../../infrastructure/fly_with_flutter/tutorial_repository.dart';
 import 'fly_with_flutter_state.dart';
 

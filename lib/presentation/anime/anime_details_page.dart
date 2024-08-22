@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../_core/components/my_cached_network_image.dart';
-import '../../domain/core/models/anime/anime_model.dart';
+import '../../domain/models/anime/anime_model.dart';
 
 class AnimeDetailsPage extends StatelessWidget {
   final AnimeModel anime;

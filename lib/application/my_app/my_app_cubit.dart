@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../domain/core/models/user/user_model.dart';
+import '../../domain/models/user/user_model.dart';
 import 'my_app_state.dart';
 
 class MyAppCubit extends Cubit<MyAppState> {

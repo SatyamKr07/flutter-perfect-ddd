@@ -8,7 +8,7 @@ import 'package:flutter_perfect_ddd/presentation/my_boottom_nav_bar/my_bottom_na
 import 'package:flutter_perfect_ddd/presentation/anime/anime_details_page.dart'; // Import the details page
 import 'package:go_router/go_router.dart';
 
-import '../domain/core/models/anime/anime_model.dart';
+import '../domain/models/anime/anime_model.dart';
 
 class MyAppRouter {
   static final router = GoRouter(
@@ -33,7 +33,7 @@ class MyAppRouter {
         builder: (context, state) {
           final anime = state.extra
               as AnimeModel; // Ensure you're passing AnimeModel in extra
-          return AnimeDetailsPage(anime:anime);
+          return AnimeDetailsPage(anime: anime);
         },
       ),
       // Add more routes here

@@ -1,12 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_perfect_ddd/_core/errors/error_handler.dart';
 import 'package:flutter_perfect_ddd/application/my_app/my_app_cubit.dart';
 import 'package:flutter_perfect_ddd/_route/route_names.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:go_router/go_router.dart';
-import '../../domain/auth/auth_failure.dart';
-import '../../domain/auth/i_auth_repository.dart';
-import '../../domain/core/models/user/user_model.dart';
+import '../../domain/i_repositories/auth/auth_failure.dart';
+import '../../domain/i_repositories/auth/i_auth_repository.dart';
+import '../../domain/models/user/user_model.dart';
 import '../../_di/injection.dart';
 part 'auth_cubit.freezed.dart';
 part 'auth_state.dart';

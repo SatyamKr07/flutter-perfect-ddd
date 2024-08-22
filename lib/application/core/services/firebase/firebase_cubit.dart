@@ -1,8 +1,8 @@
 // application/firebase/firebase_cubit.dart
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_perfect_ddd/domain/core/models/media/media_model.dart';
+import 'package:flutter_perfect_ddd/domain/models/media/media_model.dart';
 import 'package:fpdart/fpdart.dart';
-import '../../../../domain/core/failures.dart';
+import '../../../../_core/errors/failures.dart';
 import '../../../../_core/services/firebase_service/firebase_service.dart';
 import 'firebase_state.dart';
 

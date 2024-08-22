@@ -22,7 +22,7 @@ mixin _$AuthState {
     required TResult Function() authenticating,
     required TResult Function(User firebaseUser) authenticated,
     required TResult Function() unauthenticated,
-    required TResult Function(Exception failure) failure,
+    required TResult Function(AppException failure) failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -31,7 +31,7 @@ mixin _$AuthState {
     TResult? Function()? authenticating,
     TResult? Function(User firebaseUser)? authenticated,
     TResult? Function()? unauthenticated,
-    TResult? Function(Exception failure)? failure,
+    TResult? Function(AppException failure)? failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -40,7 +40,7 @@ mixin _$AuthState {
     TResult Function()? authenticating,
     TResult Function(User firebaseUser)? authenticated,
     TResult Function()? unauthenticated,
-    TResult Function(Exception failure)? failure,
+    TResult Function(AppException failure)? failure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -133,7 +133,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function() authenticating,
     required TResult Function(User firebaseUser) authenticated,
     required TResult Function() unauthenticated,
-    required TResult Function(Exception failure) failure,
+    required TResult Function(AppException failure) failure,
   }) {
     return initial();
   }
@@ -145,7 +145,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? authenticating,
     TResult? Function(User firebaseUser)? authenticated,
     TResult? Function()? unauthenticated,
-    TResult? Function(Exception failure)? failure,
+    TResult? Function(AppException failure)? failure,
   }) {
     return initial?.call();
   }
@@ -157,7 +157,7 @@ class _$InitialImpl implements _Initial {
     TResult Function()? authenticating,
     TResult Function(User firebaseUser)? authenticated,
     TResult Function()? unauthenticated,
-    TResult Function(Exception failure)? failure,
+    TResult Function(AppException failure)? failure,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -253,7 +253,7 @@ class _$AuthenticatingImpl implements _Authenticating {
     required TResult Function() authenticating,
     required TResult Function(User firebaseUser) authenticated,
     required TResult Function() unauthenticated,
-    required TResult Function(Exception failure) failure,
+    required TResult Function(AppException failure) failure,
   }) {
     return authenticating();
   }
@@ -265,7 +265,7 @@ class _$AuthenticatingImpl implements _Authenticating {
     TResult? Function()? authenticating,
     TResult? Function(User firebaseUser)? authenticated,
     TResult? Function()? unauthenticated,
-    TResult? Function(Exception failure)? failure,
+    TResult? Function(AppException failure)? failure,
   }) {
     return authenticating?.call();
   }
@@ -277,7 +277,7 @@ class _$AuthenticatingImpl implements _Authenticating {
     TResult Function()? authenticating,
     TResult Function(User firebaseUser)? authenticated,
     TResult Function()? unauthenticated,
-    TResult Function(Exception failure)? failure,
+    TResult Function(AppException failure)? failure,
     required TResult orElse(),
   }) {
     if (authenticating != null) {
@@ -400,7 +400,7 @@ class _$AuthenticatedImpl implements _Authenticated {
     required TResult Function() authenticating,
     required TResult Function(User firebaseUser) authenticated,
     required TResult Function() unauthenticated,
-    required TResult Function(Exception failure) failure,
+    required TResult Function(AppException failure) failure,
   }) {
     return authenticated(firebaseUser);
   }
@@ -412,7 +412,7 @@ class _$AuthenticatedImpl implements _Authenticated {
     TResult? Function()? authenticating,
     TResult? Function(User firebaseUser)? authenticated,
     TResult? Function()? unauthenticated,
-    TResult? Function(Exception failure)? failure,
+    TResult? Function(AppException failure)? failure,
   }) {
     return authenticated?.call(firebaseUser);
   }
@@ -424,7 +424,7 @@ class _$AuthenticatedImpl implements _Authenticated {
     TResult Function()? authenticating,
     TResult Function(User firebaseUser)? authenticated,
     TResult Function()? unauthenticated,
-    TResult Function(Exception failure)? failure,
+    TResult Function(AppException failure)? failure,
     required TResult orElse(),
   }) {
     if (authenticated != null) {
@@ -525,7 +525,7 @@ class _$UnauthenticatedImpl implements _Unauthenticated {
     required TResult Function() authenticating,
     required TResult Function(User firebaseUser) authenticated,
     required TResult Function() unauthenticated,
-    required TResult Function(Exception failure) failure,
+    required TResult Function(AppException failure) failure,
   }) {
     return unauthenticated();
   }
@@ -537,7 +537,7 @@ class _$UnauthenticatedImpl implements _Unauthenticated {
     TResult? Function()? authenticating,
     TResult? Function(User firebaseUser)? authenticated,
     TResult? Function()? unauthenticated,
-    TResult? Function(Exception failure)? failure,
+    TResult? Function(AppException failure)? failure,
   }) {
     return unauthenticated?.call();
   }
@@ -549,7 +549,7 @@ class _$UnauthenticatedImpl implements _Unauthenticated {
     TResult Function()? authenticating,
     TResult Function(User firebaseUser)? authenticated,
     TResult Function()? unauthenticated,
-    TResult Function(Exception failure)? failure,
+    TResult Function(AppException failure)? failure,
     required TResult orElse(),
   }) {
     if (unauthenticated != null) {
@@ -609,7 +609,7 @@ abstract class _$$FailureImplCopyWith<$Res> {
           _$FailureImpl value, $Res Function(_$FailureImpl) then) =
       __$$FailureImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Exception failure});
+  $Res call({AppException failure});
 }
 
 /// @nodoc
@@ -629,7 +629,7 @@ class __$$FailureImplCopyWithImpl<$Res>
       null == failure
           ? _value.failure
           : failure // ignore: cast_nullable_to_non_nullable
-              as Exception,
+              as AppException,
     ));
   }
 }
@@ -640,7 +640,7 @@ class _$FailureImpl implements _Failure {
   const _$FailureImpl(this.failure);
 
   @override
-  final Exception failure;
+  final AppException failure;
 
   @override
   String toString() {
@@ -671,7 +671,7 @@ class _$FailureImpl implements _Failure {
     required TResult Function() authenticating,
     required TResult Function(User firebaseUser) authenticated,
     required TResult Function() unauthenticated,
-    required TResult Function(Exception failure) failure,
+    required TResult Function(AppException failure) failure,
   }) {
     return failure(this.failure);
   }
@@ -683,7 +683,7 @@ class _$FailureImpl implements _Failure {
     TResult? Function()? authenticating,
     TResult? Function(User firebaseUser)? authenticated,
     TResult? Function()? unauthenticated,
-    TResult? Function(Exception failure)? failure,
+    TResult? Function(AppException failure)? failure,
   }) {
     return failure?.call(this.failure);
   }
@@ -695,7 +695,7 @@ class _$FailureImpl implements _Failure {
     TResult Function()? authenticating,
     TResult Function(User firebaseUser)? authenticated,
     TResult Function()? unauthenticated,
-    TResult Function(Exception failure)? failure,
+    TResult Function(AppException failure)? failure,
     required TResult orElse(),
   }) {
     if (failure != null) {
@@ -746,9 +746,9 @@ class _$FailureImpl implements _Failure {
 }
 
 abstract class _Failure implements AuthState {
-  const factory _Failure(final Exception failure) = _$FailureImpl;
+  const factory _Failure(final AppException failure) = _$FailureImpl;
 
-  Exception get failure;
+  AppException get failure;
   @JsonKey(ignore: true)
   _$$FailureImplCopyWith<_$FailureImpl> get copyWith =>
       throw _privateConstructorUsedError;

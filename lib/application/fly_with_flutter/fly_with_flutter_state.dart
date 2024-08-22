@@ -1,4 +1,4 @@
-import '../../domain/core/models/fly_with_flutter/tutorial_step.dart';
+import '../../domain/models/fly_with_flutter/tutorial_step.dart';
 
 class FlyWithFlutterState {
   final bool isLoading;

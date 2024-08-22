@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import '../../../_core/services/my_logger.dart';
+import '../services/my_logger.dart';
 
-class AppException implements Exception {
+class AppException {
   final String message;
   final String? code;
 
