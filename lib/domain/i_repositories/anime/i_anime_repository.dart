@@ -1,4 +1,4 @@
-import 'package:flutter_perfect_ddd/_core/errors/error_handler.dart';
+import 'package:flutter_perfect_ddd/_core/errors/app_error.dart';
 import 'package:fpdart/fpdart.dart';
 import '../../models/anime/anime_model.dart';
 

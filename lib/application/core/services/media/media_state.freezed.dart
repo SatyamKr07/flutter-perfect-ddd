@@ -19,7 +19,7 @@ mixin _$MediaState {
   bool get isLoading => throw _privateConstructorUsedError;
   List<String> get selectedImages => throw _privateConstructorUsedError;
   List<MediaModel> get uploadedMedia => throw _privateConstructorUsedError;
-  Option<Either<Failure, List<MediaModel>>> get mediaOption =>
+  Option<Either<AppError, List<MediaModel>>> get mediaOption =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -37,7 +37,7 @@ abstract class $MediaStateCopyWith<$Res> {
       {bool isLoading,
       List<String> selectedImages,
       List<MediaModel> uploadedMedia,
-      Option<Either<Failure, List<MediaModel>>> mediaOption});
+      Option<Either<AppError, List<MediaModel>>> mediaOption});
 }
 
 /// @nodoc
@@ -74,7 +74,7 @@ class _$MediaStateCopyWithImpl<$Res, $Val extends MediaState>
       mediaOption: null == mediaOption
           ? _value.mediaOption
           : mediaOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<Failure, List<MediaModel>>>,
+              as Option<Either<AppError, List<MediaModel>>>,
     ) as $Val);
   }
 }
@@ -91,7 +91,7 @@ abstract class _$$MediaStateImplCopyWith<$Res>
       {bool isLoading,
       List<String> selectedImages,
       List<MediaModel> uploadedMedia,
-      Option<Either<Failure, List<MediaModel>>> mediaOption});
+      Option<Either<AppError, List<MediaModel>>> mediaOption});
 }
 
 /// @nodoc
@@ -126,7 +126,7 @@ class __$$MediaStateImplCopyWithImpl<$Res>
       mediaOption: null == mediaOption
           ? _value.mediaOption
           : mediaOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<Failure, List<MediaModel>>>,
+              as Option<Either<AppError, List<MediaModel>>>,
     ));
   }
 }
@@ -161,7 +161,7 @@ class _$MediaStateImpl implements _MediaState {
   }
 
   @override
-  final Option<Either<Failure, List<MediaModel>>> mediaOption;
+  final Option<Either<AppError, List<MediaModel>>> mediaOption;
 
   @override
   String toString() {
@@ -203,7 +203,7 @@ abstract class _MediaState implements MediaState {
       {required final bool isLoading,
       required final List<String> selectedImages,
       required final List<MediaModel> uploadedMedia,
-      required final Option<Either<Failure, List<MediaModel>>>
+      required final Option<Either<AppError, List<MediaModel>>>
           mediaOption}) = _$MediaStateImpl;
 
   @override
@@ -213,7 +213,7 @@ abstract class _MediaState implements MediaState {
   @override
   List<MediaModel> get uploadedMedia;
   @override
-  Option<Either<Failure, List<MediaModel>>> get mediaOption;
+  Option<Either<AppError, List<MediaModel>>> get mediaOption;
   @override
   @JsonKey(ignore: true)
   _$$MediaStateImplCopyWith<_$MediaStateImpl> get copyWith =>

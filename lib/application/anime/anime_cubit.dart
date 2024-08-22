@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_perfect_ddd/_core/errors/error_handler.dart';
+import 'package:flutter_perfect_ddd/_core/errors/app_error.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import '../../domain/i_repositories/anime/i_anime_repository.dart';
 import '../../domain/models/anime/anime_model.dart';

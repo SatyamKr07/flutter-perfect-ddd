@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$FirebaseState {
   bool get isLoading => throw _privateConstructorUsedError;
   List<MediaModel> get uploadedMedia => throw _privateConstructorUsedError;
-  Option<Either<Failure, List<MediaModel>>> get mediaOption =>
+  Option<Either<AppError, List<MediaModel>>> get mediaOption =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -35,7 +35,7 @@ abstract class $FirebaseStateCopyWith<$Res> {
   $Res call(
       {bool isLoading,
       List<MediaModel> uploadedMedia,
-      Option<Either<Failure, List<MediaModel>>> mediaOption});
+      Option<Either<AppError, List<MediaModel>>> mediaOption});
 }
 
 /// @nodoc
@@ -67,7 +67,7 @@ class _$FirebaseStateCopyWithImpl<$Res, $Val extends FirebaseState>
       mediaOption: null == mediaOption
           ? _value.mediaOption
           : mediaOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<Failure, List<MediaModel>>>,
+              as Option<Either<AppError, List<MediaModel>>>,
     ) as $Val);
   }
 }
@@ -83,7 +83,7 @@ abstract class _$$FirebaseStateImplCopyWith<$Res>
   $Res call(
       {bool isLoading,
       List<MediaModel> uploadedMedia,
-      Option<Either<Failure, List<MediaModel>>> mediaOption});
+      Option<Either<AppError, List<MediaModel>>> mediaOption});
 }
 
 /// @nodoc
@@ -113,7 +113,7 @@ class __$$FirebaseStateImplCopyWithImpl<$Res>
       mediaOption: null == mediaOption
           ? _value.mediaOption
           : mediaOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<Failure, List<MediaModel>>>,
+              as Option<Either<AppError, List<MediaModel>>>,
     ));
   }
 }
@@ -138,7 +138,7 @@ class _$FirebaseStateImpl implements _FirebaseState {
   }
 
   @override
-  final Option<Either<Failure, List<MediaModel>>> mediaOption;
+  final Option<Either<AppError, List<MediaModel>>> mediaOption;
 
   @override
   String toString() {
@@ -173,7 +173,7 @@ abstract class _FirebaseState implements FirebaseState {
   const factory _FirebaseState(
       {required final bool isLoading,
       required final List<MediaModel> uploadedMedia,
-      required final Option<Either<Failure, List<MediaModel>>>
+      required final Option<Either<AppError, List<MediaModel>>>
           mediaOption}) = _$FirebaseStateImpl;
 
   @override
@@ -181,7 +181,7 @@ abstract class _FirebaseState implements FirebaseState {
   @override
   List<MediaModel> get uploadedMedia;
   @override
-  Option<Either<Failure, List<MediaModel>>> get mediaOption;
+  Option<Either<AppError, List<MediaModel>>> get mediaOption;
   @override
   @JsonKey(ignore: true)
   _$$FirebaseStateImplCopyWith<_$FirebaseStateImpl> get copyWith =>

@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_perfect_ddd/_core/errors/error_handler.dart';
+import 'package:flutter_perfect_ddd/_core/errors/app_error.dart';
 import 'package:flutter_perfect_ddd/application/my_app/my_app_cubit.dart';
 import 'package:flutter_perfect_ddd/_route/route_names.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';

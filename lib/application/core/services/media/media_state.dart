@@ -1,9 +1,8 @@
 // application/media/media_state.dart
+import 'package:flutter_perfect_ddd/_core/errors/app_error.dart';
 import 'package:flutter_perfect_ddd/domain/models/media/media_model.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../../../_core/errors/failures.dart';
-
 part 'media_state.freezed.dart';
 
 @freezed
@@ -12,7 +11,7 @@ class MediaState with _$MediaState {
     required bool isLoading,
     required List<String> selectedImages,
     required List<MediaModel> uploadedMedia,
-    required Option<Either<Failure, List<MediaModel>>> mediaOption,
+    required Option<Either<AppError, List<MediaModel>>> mediaOption,
   }) = _MediaState;
 
   factory MediaState.initial() => MediaState(
