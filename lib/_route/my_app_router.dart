@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_perfect_ddd/_route/page_routers/router_anime_details_page.dart';
 import 'package:flutter_perfect_ddd/application/anime/anime_cubit.dart';
 import 'package:flutter_perfect_ddd/_di/injection.dart';
 import 'package:flutter_perfect_ddd/presentation/auth/sign_in_page.dart';
@@ -28,14 +29,7 @@ class MyAppRouter {
           child: const MyBottomNavBar(),
         ),
       ),
-      GoRoute(
-        path: RouteNames.animeDetailsPage, // Added route for anime details
-        builder: (context, state) {
-          final anime = state.extra
-              as AnimeModel; // Ensure you're passing AnimeModel in extra
-          return AnimeDetailsPage(anime: anime);
-        },
-      ),
+      ...RouterAnimeDetailsPage.router,
       // Add more routes here
     ],
   );
