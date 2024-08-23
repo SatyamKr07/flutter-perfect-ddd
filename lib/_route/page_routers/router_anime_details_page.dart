@@ -13,5 +13,16 @@ class RouterAnimeDetailsPage {
         return AnimeDetailsPage(anime: anime);
       },
     ),
+    //in case we need to pass more data
+    // GoRoute(
+    //   path: '/anime-details',
+    //   builder: (context, state) {
+    //     final data = state.extra as Map<String, dynamic>;
+    //     return AnimeDetailsPage(
+    //       anime: data['anime'],
+    //       extraInfo: data['extraInfo'],
+    //     );
+    //   },
+    // ),
   ];
 }
