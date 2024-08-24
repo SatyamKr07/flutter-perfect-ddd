@@ -9,16 +9,16 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:dio/dio.dart' as _i7;
-import 'package:flutter_perfect_ddd/_core/services/firebase_service/firebase_service.dart'
+import 'package:flutter_perfect_ddd/infrastructure/services/firebase_service/firebase_service.dart'
     as _i3;
-import 'package:flutter_perfect_ddd/_core/services/media_service/media_service.dart'
+import 'package:flutter_perfect_ddd/infrastructure/services/media_service/media_service.dart'
     as _i4;
 import 'package:flutter_perfect_ddd/_di/injection.dart' as _i19;
 import 'package:flutter_perfect_ddd/application/anime/anime_cubit.dart' as _i18;
 import 'package:flutter_perfect_ddd/application/auth/auth_cubit.dart' as _i15;
-import 'package:flutter_perfect_ddd/application/core/services/firebase/firebase_cubit.dart'
+import 'package:flutter_perfect_ddd/application/firebase/firebase_cubit.dart'
     as _i14;
-import 'package:flutter_perfect_ddd/application/core/services/media/media_cubit.dart'
+import 'package:flutter_perfect_ddd/application/media/media_cubit.dart'
     as _i12;
 import 'package:flutter_perfect_ddd/application/fly_with_flutter/fly_with_flutter_cubit.dart'
     as _i13;
@@ -28,13 +28,13 @@ import 'package:flutter_perfect_ddd/domain/repositories/anime/anime_repository.d
     as _i16;
 import 'package:flutter_perfect_ddd/domain/repositories/auth/auth_repository.dart'
     as _i9;
-import 'package:flutter_perfect_ddd/infrastructure/anime/anime_remote.dart'
+import 'package:flutter_perfect_ddd/infrastructure/repositories_impl/anime/anime_remote.dart'
     as _i11;
-import 'package:flutter_perfect_ddd/infrastructure/anime/anime_repository_impl.dart'
+import 'package:flutter_perfect_ddd/infrastructure/repositories_impl/anime/anime_repository_impl.dart'
     as _i17;
-import 'package:flutter_perfect_ddd/infrastructure/auth/auth_repository_impl.dart'
+import 'package:flutter_perfect_ddd/infrastructure/repositories_impl/auth/auth_repository_impl.dart'
     as _i10;
-import 'package:flutter_perfect_ddd/infrastructure/fly_with_flutter/tutorial_repository.dart'
+import 'package:flutter_perfect_ddd/infrastructure/repositories_impl/fly_with_flutter/tutorial_repository.dart'
     as _i6;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:go_router/go_router.dart' as _i8;

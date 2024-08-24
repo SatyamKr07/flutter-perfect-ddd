@@ -1,6 +1,6 @@
 import 'package:injectable/injectable.dart';
 
-import '../../domain/models/fly_with_flutter/tutorial_step.dart';
+import '../../../domain/models/fly_with_flutter/tutorial_step.dart';
 
 @lazySingleton
 class TutorialRepository {

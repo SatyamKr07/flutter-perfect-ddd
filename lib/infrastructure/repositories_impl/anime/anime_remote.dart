@@ -3,7 +3,7 @@ import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
 
-import '../../domain/models/anime/anime_model.dart';
+import '../../../domain/models/anime/anime_model.dart';
 
 part 'anime_remote.g.dart';
 

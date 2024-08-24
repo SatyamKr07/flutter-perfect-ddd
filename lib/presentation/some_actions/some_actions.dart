@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import '../../application/core/services/firebase/firebase_cubit.dart';
-import '../../application/core/services/firebase/firebase_state.dart';
-import '../../application/core/services/media/media_cubit.dart';
-import '../../application/core/services/media/media_state.dart';
+import '../../application/firebase/firebase_cubit.dart';
+import '../../application/firebase/firebase_state.dart';
+import '../../application/media/media_cubit.dart';
+import '../../application/media/media_state.dart';
 
 class SomeActons extends StatelessWidget {
   final MediaCubit _mediaCubit = GetIt.I<MediaCubit>();
