@@ -2,14 +2,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:fpdart/fpdart.dart';
 import '../../_core/errors/app_error_handler.dart';
-import '../../domain/i_repositories/auth/i_auth_repository.dart';
+import '../../domain/repositories/auth/auth_repository.dart';
 import '../../_core/errors/app_error.dart';
 
-class AuthRepository implements IAuthRepository {
+class AuthRepositoryImpl implements AuthRepository {
   final FirebaseAuth _firebaseAuth;
   final GoogleSignIn _googleSignIn;
 
-  AuthRepository({
+  AuthRepositoryImpl({
     required FirebaseAuth firebaseAuth,
     required GoogleSignIn googleSignIn,
   })  : _firebaseAuth = firebaseAuth,
@@ -49,5 +49,24 @@ class AuthRepository implements IAuthRepository {
       _firebaseAuth.signOut(),
       _googleSignIn.signOut(),
     ]);
+  }
+
+  @override
+  Future<Either<AppError, User>> signInAnonymously() async {
+    try {
+      final userCredential = await _firebaseAuth.signInAnonymously();
+      return right(userCredential.user!);
+    } on FirebaseAuthException catch (e) {
+      return left(AppErrorHandler.handleFirebaseAuthError(e));
+    } catch (e) {
+      return left(AppErrorHandler.handleUnknownError(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<AppError, User>> signInWithEmailAndPassword(
+      String email, String password) {
+    // TODO: implement signInWithEmailAndPassword
+    throw UnimplementedError();
   }
 }

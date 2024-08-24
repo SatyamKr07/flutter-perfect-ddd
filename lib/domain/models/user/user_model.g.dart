@@ -11,7 +11,9 @@ _$UserModelImpl _$$UserModelImplFromJson(Map<String, dynamic> json) =>
       id: json['id'] as String,
       email: json['email'] as String,
       name: json['name'] as String,
-      photoUrl: json['photoUrl'] as String,
+      photoUrl: json['photoUrl'] as String? ?? '',
+      role:
+          $enumDecodeNullable(_$UserRoleEnumMap, json['role']) ?? UserRole.user,
     );
 
 Map<String, dynamic> _$$UserModelImplToJson(_$UserModelImpl instance) =>
@@ -20,4 +22,11 @@ Map<String, dynamic> _$$UserModelImplToJson(_$UserModelImpl instance) =>
       'email': instance.email,
       'name': instance.name,
       'photoUrl': instance.photoUrl,
+      'role': _$UserRoleEnumMap[instance.role]!,
     };
+
+const _$UserRoleEnumMap = {
+  UserRole.user: 'user',
+  UserRole.guest: 'guest',
+  UserRole.admin: 'admin',
+};

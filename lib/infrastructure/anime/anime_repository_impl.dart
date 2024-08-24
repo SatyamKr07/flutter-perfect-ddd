@@ -3,14 +3,14 @@ import 'package:flutter_perfect_ddd/infrastructure/anime/anime_remote.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:injectable/injectable.dart';
 import '../../_core/errors/app_error_handler.dart';
-import '../../domain/i_repositories/anime/i_anime_repository.dart';
+import '../../domain/repositories/anime/anime_repository.dart';
 import '../../_core/errors/app_error.dart';
 import '../../domain/models/anime/anime_model.dart';
 
-@LazySingleton(as: IAnimeRepository)
-class AnimeRepository implements IAnimeRepository {
+@LazySingleton(as: AnimeRepository)
+class AnimeRepositoryImpl implements AnimeRepository {
   final AnimeRemote _animeRemote;
-  AnimeRepository(this._animeRemote);
+  AnimeRepositoryImpl(this._animeRemote);
 
   @override
   Future<Either<AppError, AnimeResponse>> getPopularAnime(

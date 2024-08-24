@@ -24,6 +24,7 @@ mixin _$UserModel {
   String get email => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get photoUrl => throw _privateConstructorUsedError;
+  UserRole get role => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +37,8 @@ abstract class $UserModelCopyWith<$Res> {
   factory $UserModelCopyWith(UserModel value, $Res Function(UserModel) then) =
       _$UserModelCopyWithImpl<$Res, UserModel>;
   @useResult
-  $Res call({String id, String email, String name, String photoUrl});
+  $Res call(
+      {String id, String email, String name, String photoUrl, UserRole role});
 }
 
 /// @nodoc
@@ -56,6 +58,7 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
     Object? email = null,
     Object? name = null,
     Object? photoUrl = null,
+    Object? role = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -74,6 +77,10 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
           ? _value.photoUrl
           : photoUrl // ignore: cast_nullable_to_non_nullable
               as String,
+      role: null == role
+          ? _value.role
+          : role // ignore: cast_nullable_to_non_nullable
+              as UserRole,
     ) as $Val);
   }
 }
@@ -86,7 +93,8 @@ abstract class _$$UserModelImplCopyWith<$Res>
       __$$UserModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String email, String name, String photoUrl});
+  $Res call(
+      {String id, String email, String name, String photoUrl, UserRole role});
 }
 
 /// @nodoc
@@ -104,6 +112,7 @@ class __$$UserModelImplCopyWithImpl<$Res>
     Object? email = null,
     Object? name = null,
     Object? photoUrl = null,
+    Object? role = null,
   }) {
     return _then(_$UserModelImpl(
       id: null == id
@@ -122,6 +131,10 @@ class __$$UserModelImplCopyWithImpl<$Res>
           ? _value.photoUrl
           : photoUrl // ignore: cast_nullable_to_non_nullable
               as String,
+      role: null == role
+          ? _value.role
+          : role // ignore: cast_nullable_to_non_nullable
+              as UserRole,
     ));
   }
 }
@@ -133,7 +146,8 @@ class _$UserModelImpl implements _UserModel {
       {required this.id,
       required this.email,
       required this.name,
-      required this.photoUrl});
+      this.photoUrl = '',
+      this.role = UserRole.user});
 
   factory _$UserModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserModelImplFromJson(json);
@@ -145,11 +159,15 @@ class _$UserModelImpl implements _UserModel {
   @override
   final String name;
   @override
+  @JsonKey()
   final String photoUrl;
+  @override
+  @JsonKey()
+  final UserRole role;
 
   @override
   String toString() {
-    return 'UserModel(id: $id, email: $email, name: $name, photoUrl: $photoUrl)';
+    return 'UserModel(id: $id, email: $email, name: $name, photoUrl: $photoUrl, role: $role)';
   }
 
   @override
@@ -161,12 +179,13 @@ class _$UserModelImpl implements _UserModel {
             (identical(other.email, email) || other.email == email) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.photoUrl, photoUrl) ||
-                other.photoUrl == photoUrl));
+                other.photoUrl == photoUrl) &&
+            (identical(other.role, role) || other.role == role));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, email, name, photoUrl);
+  int get hashCode => Object.hash(runtimeType, id, email, name, photoUrl, role);
 
   @JsonKey(ignore: true)
   @override
@@ -187,7 +206,8 @@ abstract class _UserModel implements UserModel {
       {required final String id,
       required final String email,
       required final String name,
-      required final String photoUrl}) = _$UserModelImpl;
+      final String photoUrl,
+      final UserRole role}) = _$UserModelImpl;
 
   factory _UserModel.fromJson(Map<String, dynamic> json) =
       _$UserModelImpl.fromJson;
@@ -200,6 +220,8 @@ abstract class _UserModel implements UserModel {
   String get name;
   @override
   String get photoUrl;
+  @override
+  UserRole get role;
   @override
   @JsonKey(ignore: true)
   _$$UserModelImplCopyWith<_$UserModelImpl> get copyWith =>

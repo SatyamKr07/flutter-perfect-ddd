@@ -5,15 +5,15 @@ import 'package:flutter_perfect_ddd/application/auth/auth_cubit.dart';
 import 'package:flutter_perfect_ddd/application/core/services/firebase/firebase_cubit.dart';
 import 'package:flutter_perfect_ddd/application/core/services/media/media_cubit.dart';
 import 'package:flutter_perfect_ddd/application/my_app/my_app_cubit.dart';
-import 'package:flutter_perfect_ddd/domain/i_repositories/anime/i_anime_repository.dart';
-import 'package:flutter_perfect_ddd/infrastructure/anime/anime_repository.dart';
-import 'package:flutter_perfect_ddd/infrastructure/auth/auth_repository.dart';
+import 'package:flutter_perfect_ddd/domain/repositories/anime/anime_repository.dart';
+import 'package:flutter_perfect_ddd/infrastructure/anime/anime_repository_impl.dart';
+import 'package:flutter_perfect_ddd/infrastructure/auth/auth_repository_impl.dart';
 import 'package:flutter_perfect_ddd/_route/my_app_router.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
-import '../domain/i_repositories/auth/i_auth_repository.dart';
+import '../domain/repositories/auth/auth_repository.dart';
 import '../env.dart';
 import '../infrastructure/anime/anime_remote.dart';
 import '../_core/my_enums/my_enums.dart';
@@ -41,25 +41,25 @@ void setupLocator() {
   ///auth
   getIt.registerLazySingleton<FirebaseAuth>(() => FirebaseAuth.instance);
   getIt.registerLazySingleton<GoogleSignIn>(() => GoogleSignIn());
-  getIt.registerLazySingleton<IAuthRepository>(() => AuthRepository(
+  getIt.registerLazySingleton<AuthRepository>(() => AuthRepositoryImpl(
         firebaseAuth: getIt<FirebaseAuth>(),
         googleSignIn: getIt<GoogleSignIn>(),
       ));
   getIt.registerLazySingleton<AuthCubit>(
-      () => AuthCubit(getIt<IAuthRepository>()));
+      () => AuthCubit(getIt<AuthRepository>()));
 
   ///MyApp
   getIt.registerLazySingleton<MyAppCubit>(() => MyAppCubit());
 
   ///anime
   getIt.registerLazySingleton<AnimeRemote>(() => AnimeRemote(getIt<Dio>()));
-  getIt.registerLazySingleton<IAnimeRepository>(
-      () => AnimeRepository(getIt<AnimeRemote>()));
+  getIt.registerLazySingleton<AnimeRepository>(
+      () => AnimeRepositoryImpl(getIt<AnimeRemote>()));
   getIt.registerLazySingleton<AnimeCubit>(
-      () => AnimeCubit(getIt<IAnimeRepository>()));
+      () => AnimeCubit(getIt<AnimeRepository>()));
 
-  ///Media 
-   getIt.registerLazySingleton<MediaCubit>(
+  ///Media
+  getIt.registerLazySingleton<MediaCubit>(
       () => MediaCubit(getIt<MediaService>()));
 
   ///firebase

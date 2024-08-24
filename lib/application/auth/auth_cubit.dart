@@ -5,28 +5,46 @@ import 'package:flutter_perfect_ddd/application/my_app/my_app_cubit.dart';
 import 'package:flutter_perfect_ddd/_route/route_names.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:go_router/go_router.dart';
-import '../../domain/i_repositories/auth/auth_failure.dart';
-import '../../domain/i_repositories/auth/i_auth_repository.dart';
+import '../../domain/repositories/auth/auth_failure.dart';
+import '../../domain/repositories/auth/auth_repository.dart';
 import '../../domain/models/user/user_model.dart';
 import '../../_di/injection.dart';
 part 'auth_cubit.freezed.dart';
 part 'auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> {
-  final IAuthRepository _authRepository;
+  final AuthRepository _authRepository;
+  UserModel? userModel;
 
   AuthCubit(this._authRepository) : super(const AuthState.initial()) {
     _authRepository.authStateChanges.listen((user) {
-      if (user != null) {
-        updateUserModel(user);
-        getIt<GoRouter>().go(RouteNames.myBottomNavBarPage);
-        emit(AuthState.authenticated(user));
-      } else {
-        getIt<MyAppCubit>().clearUser();
-        getIt<GoRouter>().go(RouteNames.signInPage);
-        emit(const AuthState.unauthenticated());
-      }
+      checkAuthState(user);
     });
+  }
+
+  Future<void> checkAuthState(User? user) async {
+    if (user != null) {
+      routeBasedOnRole(UserRole.user);
+      emit(AuthState.authenticated(user));
+    } else {
+      getIt<MyAppCubit>().clearUser();
+      getIt<GoRouter>().go(RouteNames.signInPage);
+      emit(const AuthState.unauthenticated());
+    }
+  }
+
+  void routeBasedOnRole(userRole) {
+    switch (userRole) {
+      case UserRole.user:
+        getIt<GoRouter>().go(RouteNames.myBottomNavBarPage);
+        break;
+      case UserRole.guest:
+        getIt<GoRouter>().go(RouteNames.myBottomNavBarPage);
+        break;
+      case UserRole.admin:
+        getIt<GoRouter>().go(RouteNames.myBottomNavBarPage);
+        break;
+    }
   }
 
   Future<void> signInWithGoogle() async {
@@ -37,21 +55,56 @@ class AuthCubit extends Cubit<AuthState> {
       failureOrUser.fold(
         (failure) => AuthState.failure(failure),
         (user) {
+          updateUserModel(firebaseUser: user, userRole: UserRole.user);
+          routeBasedOnRole(UserRole.user);
           return AuthState.authenticated(user);
         },
       ),
     );
   }
 
-  UserModel updateUserModel(User user) {
-    UserModel userModel = UserModel(
-      id: user.uid,
-      email: user.email!,
-      name: user.displayName ?? '',
-      photoUrl: user.photoURL ?? '',
+  Future<void> signInAsGuest() async {
+    emit(const AuthState.authenticating());
+    final result = await _authRepository.signInAnonymously();
+    emit(
+      result.fold(
+        (failure) => AuthState.failure(failure),
+        (user) {
+          updateUserModel(firebaseUser: user, userRole: UserRole.admin);
+          routeBasedOnRole(UserRole.guest);
+          return AuthState.authenticated(user);
+        },
+      ),
     );
-    getIt<MyAppCubit>().updateUserModel(userModel);
-    return userModel;
+  }
+
+  Future<void> signInWithEmailAndPassword(String email, String password) async {
+    emit(const AuthState.authenticating());
+    final result =
+        await _authRepository.signInWithEmailAndPassword(email, password);
+    emit(
+      result.fold(
+        (failure) => AuthState.failure(failure),
+        (user) {
+          updateUserModel(firebaseUser: user, userRole: UserRole.admin);
+          routeBasedOnRole(UserRole.admin);
+          return AuthState.authenticated(user);
+        },
+      ),
+    );
+  }
+
+  UserModel updateUserModel(
+      {required User firebaseUser, required UserRole userRole}) {
+    userModel = UserModel(
+      id: firebaseUser.uid,
+      email: firebaseUser.email ?? '',
+      name: firebaseUser.displayName ?? '',
+      photoUrl: firebaseUser.photoURL ?? '',
+      role: userRole, // Default role
+    );
+    getIt<MyAppCubit>().updateUserModel(userModel!);
+    return userModel!;
   }
 
   Future<void> signOut() async {

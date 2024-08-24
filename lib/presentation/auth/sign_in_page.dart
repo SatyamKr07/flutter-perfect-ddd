@@ -25,11 +25,30 @@ class SignInPage extends StatelessWidget {
           builder: (context, state) {
             return state.maybeWhen(
               authenticating: () => const CircularProgressIndicator(),
-              orElse: () => ElevatedButton(
-                onPressed: () {
-                  context.read<AuthCubit>().signInWithGoogle();
-                },
-                child: const Text('Sign in with Google'),
+              orElse: () => Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      context.read<AuthCubit>().signInWithGoogle();
+                    },
+                    child: const Text('Sign in with Google (User)'),
+                  ),
+                  const SizedBox(height: 20),
+                  ElevatedButton(
+                    onPressed: () {
+                      context.read<AuthCubit>().signInAsGuest();
+                    },
+                    child: const Text('Guest Login'),
+                  ),
+                  const SizedBox(height: 20),
+                  ElevatedButton(
+                    onPressed: () {
+                      // Navigate to admin login page
+                    },
+                    child: const Text('Admin Login'),
+                  ),
+                ],
               ),
             );
           },
