@@ -2,11 +2,13 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_perfect_ddd/_core/errors/app_error.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 import '../../domain/repositories/anime/anime_repository.dart';
 import '../../domain/models/anime/anime_model.dart';
 part 'anime_state.dart';
 part 'anime_cubit.freezed.dart';
 
+@lazySingleton
 class AnimeCubit extends Cubit<AnimeState> {
   final AnimeRepository _animeRepository;
 

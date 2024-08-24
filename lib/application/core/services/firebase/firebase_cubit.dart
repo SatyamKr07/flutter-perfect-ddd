@@ -2,10 +2,12 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_perfect_ddd/domain/models/media/media_model.dart';
 import 'package:fpdart/fpdart.dart';
+import 'package:injectable/injectable.dart';
 import '../../../../_core/errors/app_error.dart';
 import '../../../../_core/services/firebase_service/firebase_service.dart';
 import 'firebase_state.dart';
 
+@lazySingleton
 class FirebaseCubit extends Cubit<FirebaseState> {
   final FirebaseService _firebaseService;
 

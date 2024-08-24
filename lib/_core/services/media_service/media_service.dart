@@ -1,8 +1,10 @@
 // services/media_service.dart
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter_image_compress/flutter_image_compress.dart';
+import 'package:injectable/injectable.dart';
 // import 'package:video_compress/video_compress.dart';
 
+@LazySingleton()
 class MediaService {
   final ImagePicker _picker = ImagePicker();
 

@@ -6,6 +6,7 @@ import 'presentation/my_app.dart';
 
 void main() {
   Env.setEnvironment(EnumEnv.uat);
-  setupLocator();
+  // setupLocator();
+  configureDependencies();
   runApp(MyApp());
 }

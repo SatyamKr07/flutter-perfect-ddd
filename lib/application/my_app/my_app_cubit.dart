@@ -1,7 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 import '../../domain/models/user/user_model.dart';
 import 'my_app_state.dart';
 
+@lazySingleton
 class MyAppCubit extends Cubit<MyAppState> {
   MyAppCubit() : super(MyAppState(themeMode: ThemeModeType.light));
 

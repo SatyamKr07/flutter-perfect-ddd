@@ -2,8 +2,10 @@
 import 'dart:io';
 
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:injectable/injectable.dart';
 import 'package:path/path.dart';
 
+@LazySingleton()
 class FirebaseService {
   final FirebaseStorage _storage = FirebaseStorage.instance;
 

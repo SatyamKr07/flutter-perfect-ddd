@@ -1,19 +1,15 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:fpdart/fpdart.dart';
+import 'package:injectable/injectable.dart';
 import '../../_core/errors/app_error_handler.dart';
 import '../../domain/repositories/auth/auth_repository.dart';
 import '../../_core/errors/app_error.dart';
 
+@LazySingleton(as: AuthRepository)
 class AuthRepositoryImpl implements AuthRepository {
-  final FirebaseAuth _firebaseAuth;
-  final GoogleSignIn _googleSignIn;
-
-  AuthRepositoryImpl({
-    required FirebaseAuth firebaseAuth,
-    required GoogleSignIn googleSignIn,
-  })  : _firebaseAuth = firebaseAuth,
-        _googleSignIn = googleSignIn;
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
   @override
   Stream<User?> get authStateChanges =>

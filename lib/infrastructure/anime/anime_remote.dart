@@ -7,7 +7,7 @@ import '../../domain/models/anime/anime_model.dart';
 
 part 'anime_remote.g.dart';
 
-@injectable
+@lazySingleton
 @RestApi()
 abstract class AnimeRemote {
   @factoryMethod

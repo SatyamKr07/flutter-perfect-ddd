@@ -1,8 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 import '../../domain/models/fly_with_flutter/tutorial_step.dart';
 import '../../infrastructure/fly_with_flutter/tutorial_repository.dart';
-import 'fly_with_flutter_state.dart';
 
+@lazySingleton
 class FlyWithFlutterCubit extends Cubit<FlyWithFlutterState> {
   final TutorialRepository _repository;
 
@@ -25,16 +26,19 @@ class FlyWithFlutterCubit extends Cubit<FlyWithFlutterState> {
   }
 
   void toggleStepCompletion(String stepId, bool isCompleted) {
-    final updatedSteps = _updateStepCompletion(state.tutorialSteps, stepId, isCompleted);
+    final updatedSteps =
+        _updateStepCompletion(state.tutorialSteps, stepId, isCompleted);
     emit(state.copyWith(tutorialSteps: updatedSteps));
   }
 
-  List<TutorialStep> _updateStepCompletion(List<TutorialStep> steps, String stepId, bool isCompleted) {
+  List<TutorialStep> _updateStepCompletion(
+      List<TutorialStep> steps, String stepId, bool isCompleted) {
     return steps.map((step) {
       if (step.id == stepId) {
         return step.copyWith(isCompleted: isCompleted);
       } else if (step.subSteps.isNotEmpty) {
-        final updatedSubSteps = _updateStepCompletion(step.subSteps, stepId, isCompleted);
+        final updatedSubSteps =
+            _updateStepCompletion(step.subSteps, stepId, isCompleted);
         return step.copyWith(subSteps: updatedSubSteps);
       }
       return step;
@@ -63,7 +67,8 @@ class FlyWithFlutterCubit extends Cubit<FlyWithFlutterState> {
     emit(state.copyWith(tutorialSteps: updatedSteps));
   }
 
-  List<TutorialStep> _addStepToList(List<TutorialStep> steps, TutorialStep newStep, String? parentId) {
+  List<TutorialStep> _addStepToList(
+      List<TutorialStep> steps, TutorialStep newStep, String? parentId) {
     if (parentId == null) {
       return [...steps, newStep];
     }
@@ -72,7 +77,8 @@ class FlyWithFlutterCubit extends Cubit<FlyWithFlutterState> {
       if (step.id == parentId) {
         return step.copyWith(subSteps: [...step.subSteps, newStep]);
       } else if (step.subSteps.isNotEmpty) {
-        final updatedSubSteps = _addStepToList(step.subSteps, newStep, parentId);
+        final updatedSubSteps =
+            _addStepToList(step.subSteps, newStep, parentId);
         return step.copyWith(subSteps: updatedSubSteps);
       }
       return step;
@@ -84,7 +90,8 @@ class FlyWithFlutterCubit extends Cubit<FlyWithFlutterState> {
     emit(state.copyWith(tutorialSteps: updatedSteps));
   }
 
-  List<TutorialStep> _updateStepInList(List<TutorialStep> steps, TutorialStep updatedStep) {
+  List<TutorialStep> _updateStepInList(
+      List<TutorialStep> steps, TutorialStep updatedStep) {
     return steps.map((step) {
       if (step.id == updatedStep.id) {
         return updatedStep;
