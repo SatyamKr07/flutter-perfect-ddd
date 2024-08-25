@@ -1,4 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_perfect_ddd/app_core/errors/app_error.dart';
+import 'package:flutter_perfect_ddd/presentation/pages/error_log_page/error_log_page.dart';
 import 'package:flutter_perfect_ddd/presentation/routes/page_routers/router_anime_details_page.dart';
 import 'package:flutter_perfect_ddd/application/anime/anime_cubit.dart';
 import 'package:flutter_perfect_ddd/infrastructure/di/injection.dart';
@@ -30,6 +32,15 @@ class MyAppRouter {
         ),
       ),
       ...RouterAnimeDetailsPage.router,
+      GoRoute(
+        path: RouteNames.errorLogPage,
+        builder: (context, state) {
+          List<AppError> errors = state.extra as List<AppError>;
+          return ErrorLogPage(
+            errors: errors,
+          );
+        },
+      ),
       // Add more routes here
     ],
   );

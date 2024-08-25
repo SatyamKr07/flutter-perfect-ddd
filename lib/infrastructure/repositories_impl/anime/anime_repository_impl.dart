@@ -20,9 +20,9 @@ class AnimeRepositoryImpl implements AnimeRepository {
           await _animeRemote.getPopularAnime(page: page, limit: limit);
       return right(response);
     } on DioException catch (e) {
-      return left(AppErrorHandler.handleDioError(e));
+      return left(AppError.dioError(e));
     } catch (e) {
-      return left(AppErrorHandler.handleUnknownError(e.toString()));
+      return left(AppError.catchError(e.toString()));
     }
   }
 }

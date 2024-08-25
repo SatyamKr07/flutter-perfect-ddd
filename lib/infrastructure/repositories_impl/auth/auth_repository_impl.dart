@@ -20,7 +20,7 @@ class AuthRepositoryImpl implements AuthRepository {
     try {
       final googleUser = await _googleSignIn.signIn();
       if (googleUser == null) {
-        return left(AppErrorHandler.cancelledByUser());
+        return left(AppError.cancelledByUser());
       }
       final googleAuth = await googleUser.authentication;
       final authCredential = GoogleAuthProvider.credential(
@@ -32,10 +32,10 @@ class AuthRepositoryImpl implements AuthRepository {
             await _firebaseAuth.signInWithCredential(authCredential);
         return right(userCredential.user!);
       } on FirebaseAuthException catch (e) {
-        return left(AppErrorHandler.handleFirebaseAuthError(e));
+        return left(AppError.firebaseAuthError(e));
       }
     } on Exception catch (e) {
-      return left(AppErrorHandler.handleUnknownError(e.toString()));
+      return left(AppError.catchError(e.toString()));
     }
   }
 
@@ -53,9 +53,9 @@ class AuthRepositoryImpl implements AuthRepository {
       final userCredential = await _firebaseAuth.signInAnonymously();
       return right(userCredential.user!);
     } on FirebaseAuthException catch (e) {
-      return left(AppErrorHandler.handleFirebaseAuthError(e));
+      return left(AppError.firebaseAuthError(e));
     } catch (e) {
-      return left(AppErrorHandler.handleUnknownError(e.toString()));
+      return left(AppError.catchError(e.toString()));
     }
   }
 

@@ -1,5 +1,5 @@
 import 'package:logger/logger.dart';
 
 final logger = Logger(
-  printer: PrefixPrinter(PrettyPrinter(colors: true)),
-);
+    // printer: PrefixPrinter(PrettyPrinter(colors: true)),
+    );

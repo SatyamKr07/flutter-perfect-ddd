@@ -31,7 +31,7 @@ class FirebaseCubit extends Cubit<FirebaseState> {
         state.copyWith(
           isLoading: false,
           mediaOption: some(
-              left(AppError('Failed to upload media', code: 'UPLOAD_ERROR'))),
+              left(AppError.general('Failed to upload media', code: 'UPLOAD_ERROR'))),
         ),
       );
     }

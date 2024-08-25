@@ -1,8 +1,8 @@
-
 import 'app_core/my_enums/my_enums.dart';
 
 class Env {
   static late EnumEnv _env;
+  static bool isDev = true;
 
   static void setEnvironment(EnumEnv env) {
     _env = env;
@@ -11,6 +11,7 @@ class Env {
   static EnumEnv get getEnv {
     switch (_env) {
       case EnumEnv.dev:
+        isDev = true;
         return EnumEnv.dev;
       case EnumEnv.uat:
         return EnumEnv.uat;

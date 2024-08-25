@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
+import '../../app_core/errors/app_error.dart';
 import '../../domain/models/user/user_model.dart';
 import 'my_app_state.dart';
 
@@ -35,5 +36,9 @@ class MyAppCubit extends Cubit<MyAppState> {
 
   void clearUser() {
     emit(state.copyWith(userModel: null));
+  }
+
+  void addAppError(AppError error) {
+    emit(state.copyWith(error: error));
   }
 }

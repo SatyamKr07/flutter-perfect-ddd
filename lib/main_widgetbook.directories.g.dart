@@ -9,29 +9,12 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:flutter_perfect_ddd/widgetbook/button_use_cases.dart' as _i3;
+import 'package:flutter_perfect_ddd/widgetbook/button_use_cases.dart' as _i2;
 import 'package:flutter_perfect_ddd/widgetbook/my_cached_network_use_cases.dart'
-    as _i2;
+    as _i3;
 import 'package:widgetbook/widgetbook.dart' as _i1;
 
 final directories = <_i1.WidgetbookNode>[
-  _i1.WidgetbookFolder(
-    name: '_core',
-    children: [
-      _i1.WidgetbookFolder(
-        name: 'components',
-        children: [
-          _i1.WidgetbookLeafComponent(
-            name: 'MyCachedNetworkImage',
-            useCase: _i1.WidgetbookUseCase(
-              name: 'Default',
-              builder: _i2.defaultMyCachedNetworkImage,
-            ),
-          )
-        ],
-      )
-    ],
-  ),
   _i1.WidgetbookFolder(
     name: 'material',
     children: [
@@ -39,8 +22,30 @@ final directories = <_i1.WidgetbookNode>[
         name: 'ElevatedButton',
         useCase: _i1.WidgetbookUseCase(
           name: 'Default Button',
-          builder: _i3.defaultButton,
+          builder: _i2.defaultButton,
         ),
+      )
+    ],
+  ),
+  _i1.WidgetbookFolder(
+    name: 'presentation',
+    children: [
+      _i1.WidgetbookFolder(
+        name: 'widgets',
+        children: [
+          _i1.WidgetbookFolder(
+            name: 'reusable',
+            children: [
+              _i1.WidgetbookLeafComponent(
+                name: 'MyCachedNetworkImage',
+                useCase: _i1.WidgetbookUseCase(
+                  name: 'Default',
+                  builder: _i3.defaultMyCachedNetworkImage,
+                ),
+              )
+            ],
+          )
+        ],
       )
     ],
   ),
