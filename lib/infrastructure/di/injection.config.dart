@@ -13,7 +13,7 @@ import 'package:flutter_perfect_ddd/infrastructure/services/firebase_service/fir
     as _i3;
 import 'package:flutter_perfect_ddd/infrastructure/services/media_service/media_service.dart'
     as _i4;
-import 'package:flutter_perfect_ddd/domain/core/di/injection.dart' as _i19;
+import 'package:flutter_perfect_ddd/infrastructure/di/injection.dart' as _i19;
 import 'package:flutter_perfect_ddd/application/anime/anime_cubit.dart' as _i18;
 import 'package:flutter_perfect_ddd/application/auth/auth_cubit.dart' as _i15;
 import 'package:flutter_perfect_ddd/application/firebase/firebase_cubit.dart'

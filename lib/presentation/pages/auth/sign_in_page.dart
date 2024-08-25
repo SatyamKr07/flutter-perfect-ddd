@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import '../../../application/auth/auth_cubit.dart';
-import '../../../domain/core/di/injection.dart';
+import '../../../infrastructure/di/injection.dart';
 
 class SignInPage extends StatelessWidget {
   @override

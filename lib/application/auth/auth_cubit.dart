@@ -9,7 +9,7 @@ import 'package:injectable/injectable.dart';
 import '../../domain/repositories/auth/auth_failure.dart';
 import '../../domain/repositories/auth/auth_repository.dart';
 import '../../domain/models/user/user_model.dart';
-import '../../domain/core/di/injection.dart';
+import '../../infrastructure/di/injection.dart';
 part 'auth_cubit.freezed.dart';
 part 'auth_state.dart';
 

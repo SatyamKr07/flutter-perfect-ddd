@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_perfect_ddd/presentation/routes/page_routers/router_anime_details_page.dart';
 import 'package:flutter_perfect_ddd/application/anime/anime_cubit.dart';
-import 'package:flutter_perfect_ddd/domain/core/di/injection.dart';
+import 'package:flutter_perfect_ddd/infrastructure/di/injection.dart';
 import 'package:flutter_perfect_ddd/presentation/pages/auth/sign_in_page.dart';
 import 'package:flutter_perfect_ddd/presentation/pages/auth/splash_page.dart';
 import 'package:flutter_perfect_ddd/presentation/routes/route_names.dart';

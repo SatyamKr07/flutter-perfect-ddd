@@ -7,7 +7,7 @@ import '../../../application/my_app/my_app_cubit.dart';
 import '../../../application/my_app/my_app_state.dart';
 import '../../../domain/repositories/anime/anime_repository.dart';
 import '../../../domain/models/anime/anime_model.dart';
-import '../../../domain/core/di/injection.dart';
+import '../../../infrastructure/di/injection.dart';
 import '../../widgets/reusable/my_cached_network_image.dart';
 import '../../widgets/reusable/my_scroll_controller_provider.dart';
 
