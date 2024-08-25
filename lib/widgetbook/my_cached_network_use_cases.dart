@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart';
 
-import '../_core/components/my_cached_network_image.dart';
+import '../presentation/widgets/reusable/my_cached_network_image.dart';
 
 @UseCase(name: 'Default', type: MyCachedNetworkImage)
 Widget defaultMyCachedNetworkImage(BuildContext context) {

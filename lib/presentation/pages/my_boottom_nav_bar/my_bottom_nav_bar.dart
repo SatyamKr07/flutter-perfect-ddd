@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_perfect_ddd/presentation/some_actions/some_actions.dart';
+import 'package:flutter_perfect_ddd/presentation/pages/some_actions/some_actions.dart';
 import '../anime/anime_page.dart';
 import '../fly_with_flutter/fly_with_flutter.dart';
 import '../profile/profile_page.dart';

@@ -2,14 +2,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_perfect_ddd/_core/errors/app_error.dart';
 import 'package:flutter_perfect_ddd/application/my_app/my_app_cubit.dart';
-import 'package:flutter_perfect_ddd/_route/route_names.dart';
+import 'package:flutter_perfect_ddd/presentation/routes/route_names.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:go_router/go_router.dart';
 import 'package:injectable/injectable.dart';
 import '../../domain/repositories/auth/auth_failure.dart';
 import '../../domain/repositories/auth/auth_repository.dart';
 import '../../domain/models/user/user_model.dart';
-import '../../_di/injection.dart';
+import '../../_core/di/injection.dart';
 part 'auth_cubit.freezed.dart';
 part 'auth_state.dart';
 

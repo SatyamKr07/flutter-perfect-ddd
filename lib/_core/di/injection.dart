@@ -2,8 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 import 'package:injectable/injectable.dart';
-import '../_route/my_app_router.dart';
-import '../env.dart';
+import '../../presentation/routes/my_app_router.dart';
+import '../../env.dart';
 import 'injection.config.dart';
 
 final GetIt getIt = GetIt.instance;

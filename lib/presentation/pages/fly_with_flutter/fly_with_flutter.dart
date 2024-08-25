@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../application/fly_with_flutter/fly_with_flutter_cubit.dart';
-import '../../infrastructure/repositories_impl/fly_with_flutter/tutorial_repository.dart';
+import '../../../application/fly_with_flutter/fly_with_flutter_cubit.dart';
+import '../../../infrastructure/repositories_impl/fly_with_flutter/tutorial_repository.dart';
 import 'widgets/edit_tutorial_page.dart';
 import 'widgets/tutorial_step_widget.dart';
 

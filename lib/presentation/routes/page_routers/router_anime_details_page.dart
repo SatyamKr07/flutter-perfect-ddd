@@ -1,6 +1,6 @@
 import 'package:go_router/go_router.dart';
-import '../../domain/models/anime/anime_model.dart';
-import '../../presentation/anime/anime_details_page.dart';
+import '../../../domain/models/anime/anime_model.dart';
+import '../../pages/anime/anime_details_page.dart';
 import '../route_names.dart';
 
 class RouterAnimeDetailsPage {

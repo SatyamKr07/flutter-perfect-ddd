@@ -2,9 +2,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../application/auth/auth_cubit.dart';
-import '../../application/my_app/my_app_cubit.dart';
-import '../../application/my_app/my_app_state.dart';
+import '../../../application/auth/auth_cubit.dart';
+import '../../../application/my_app/my_app_cubit.dart';
+import '../../../application/my_app/my_app_state.dart';
 
 class ProfilePage extends StatelessWidget {
   @override

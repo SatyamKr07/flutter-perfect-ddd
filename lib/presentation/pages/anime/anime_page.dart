@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import '../../_route/route_names.dart';
-import '../../application/anime/anime_cubit.dart';
-import '../../application/my_app/my_app_cubit.dart';
-import '../../application/my_app/my_app_state.dart';
-import '../../domain/repositories/anime/anime_repository.dart';
-import '../../domain/models/anime/anime_model.dart';
-import '../../_di/injection.dart';
-import '../../_core/components/my_cached_network_image.dart';
-import '../../_core/components/my_scroll_controller_provider.dart';
+import '../../routes/route_names.dart';
+import '../../../application/anime/anime_cubit.dart';
+import '../../../application/my_app/my_app_cubit.dart';
+import '../../../application/my_app/my_app_state.dart';
+import '../../../domain/repositories/anime/anime_repository.dart';
+import '../../../domain/models/anime/anime_model.dart';
+import '../../../_core/di/injection.dart';
+import '../../widgets/reusable/my_cached_network_image.dart';
+import '../../widgets/reusable/my_scroll_controller_provider.dart';
 
 class AnimePage extends StatefulWidget {
   const AnimePage({super.key});
