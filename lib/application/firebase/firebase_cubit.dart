@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_perfect_ddd/domain/models/media/media_model.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:injectable/injectable.dart';
-import '../../domain/core/errors/app_error.dart';
+import '../../app_core/errors/app_error.dart';
 import '../../infrastructure/services/firebase_service/firebase_service.dart';
 import 'firebase_state.dart';
 

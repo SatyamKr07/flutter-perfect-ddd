@@ -2,9 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:injectable/injectable.dart';
-import '../../../domain/core/errors/app_error_handler.dart';
+import '../../../app_core/errors/app_error_handler.dart';
 import '../../../domain/repositories/auth/auth_repository.dart';
-import '../../../domain/core/errors/app_error.dart';
+import '../../../app_core/errors/app_error.dart';
 
 @LazySingleton(as: AuthRepository)
 class AuthRepositoryImpl implements AuthRepository {

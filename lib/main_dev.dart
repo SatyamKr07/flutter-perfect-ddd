@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_perfect_ddd/env.dart';
 import 'firebase_options.dart';
 import 'infrastructure/di/injection.dart';
-import 'domain/core/my_enums/my_enums.dart';
+import 'app_core/my_enums/my_enums.dart';
 import 'presentation/my_app.dart';
 
 Future<void> main() async {

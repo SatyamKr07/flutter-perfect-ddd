@@ -1,5 +1,5 @@
 // application/firebase/firebase_state.dart
-import 'package:flutter_perfect_ddd/domain/core/errors/app_error.dart';
+import 'package:flutter_perfect_ddd/app_core/errors/app_error.dart';
 import 'package:flutter_perfect_ddd/domain/models/media/media_model.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
