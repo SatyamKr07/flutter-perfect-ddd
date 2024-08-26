@@ -6,7 +6,6 @@ import 'package:flutter_perfect_ddd/presentation/routes/route_names.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:go_router/go_router.dart';
 import 'package:injectable/injectable.dart';
-import '../../domain/repositories/auth/auth_failure.dart';
 import '../../domain/repositories/auth/auth_repository.dart';
 import '../../domain/models/user/user_model.dart';
 import '../../infrastructure/di/injection.dart';

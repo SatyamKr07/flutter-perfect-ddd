@@ -32,8 +32,9 @@ class UserRepositoryImpl implements UserRepository {
       return right(user);
     } on DioException catch (e) {
       return left(AppError.dioError(e));
-    } catch (e, stack) {
-      return left(AppError.catchError("$e\n$stack", code: 'GET_USER_ERROR'));
+    } catch (e, stackTrace) {
+      return left(AppError.catchError("$e",
+          code: 'GET_USER_ERROR', stackTrace: stackTrace));
     }
   }
 
@@ -44,8 +45,9 @@ class UserRepositoryImpl implements UserRepository {
       return right(createdUser);
     } on DioException catch (e) {
       return left(AppError.dioError(e));
-    } catch (e, stack) {
-      return left(AppError.catchError("$e\n$stack", code: 'CREATE_USER_ERROR'));
+    } catch (e, stackTrace) {
+      return left(AppError.catchError("$e",
+          code: 'CREATE_USER_ERROR', stackTrace: stackTrace));
       // return left(AppError('Failed to create user', code: 'CREATE_USER_ERROR'));
     }
   }

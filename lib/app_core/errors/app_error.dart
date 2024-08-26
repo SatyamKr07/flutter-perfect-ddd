@@ -10,15 +10,18 @@ import '../../infrastructure/services/my_logger/my_logger.dart';
 class AppError {
   final String message;
   final String? code;
+  final StackTrace? stackTrace;
 
   // Private constructor
-  AppError._(this.message, {this.code}) {
-    // _showErrorSnachbar();
-    getIt<MyAppCubit>().addAppError(AppError._emitError(message, code: code));
-    logger.e(message);
+  AppError._(this.message, {this.code, this.stackTrace}) {
+    _showErrorSnachbar();
+    getIt<MyAppCubit>().addAppError(
+        AppError._emitError(message, code: code, stackTrace: stackTrace));
+    logger.e(message, stackTrace: stackTrace);
   }
 
-  AppError._emitError(this.message, {this.code});
+  // Private constructor
+  AppError._emitError(this.message, {this.code, this.stackTrace});
 
   void _showErrorSnachbar() {
     if (Env.isDev) {
@@ -34,80 +37,90 @@ class AppError {
   }
 
   // Factory method for general errors
-  factory AppError.general(String message, {String? code}) {
-    final error = AppError._(message, code: code);
+  factory AppError.general(String message,
+      {String? code, StackTrace? stackTrace}) {
+    final error = AppError._(message, code: code, stackTrace: stackTrace);
     return error;
   }
 
-  static AppError responseError(Response response) {
+  static AppError responseError(Response response, {StackTrace? stackTrace}) {
     final error = switch (response.statusCode) {
-      401 => AppError._('Unauthorized', code: 'E401'),
-      404 => AppError._('Not Found', code: 'E404'),
-      _ => AppError._('Server Error', code: 'E500'),
+      401 => AppError._('Unauthorized', code: 'E401', stackTrace: stackTrace),
+      404 => AppError._('Not Found', code: 'E404', stackTrace: stackTrace),
+      _ => AppError._('Server Error', code: 'E500', stackTrace: stackTrace),
     };
     return error;
   }
 
-  static AppError dioError(DioException error) {
+  static AppError dioError(DioException error, {StackTrace? stackTrace}) {
     final appError = switch (error.type) {
       DioExceptionType.connectionTimeout ||
       DioExceptionType.sendTimeout ||
       DioExceptionType.receiveTimeout =>
-        AppError._('Network Timeout', code: 'E001'),
-      DioExceptionType.badResponse => responseError(error.response!),
-      DioExceptionType.cancel => AppError._('Request Cancelled', code: 'E002'),
-      DioExceptionType.unknown => AppError._('Unknown Dio Error', code: 'E003'),
+        AppError._('Network Timeout', code: 'E001', stackTrace: stackTrace),
+      DioExceptionType.badResponse =>
+        responseError(error.response!, stackTrace: stackTrace),
+      DioExceptionType.cancel =>
+        AppError._('Request Cancelled', code: 'E002', stackTrace: stackTrace),
+      DioExceptionType.unknown =>
+        AppError._('Unknown Dio Error', code: 'E003', stackTrace: stackTrace),
       DioExceptionType.badCertificate =>
-        AppError._('Bad Certificate', code: 'E004'),
+        AppError._('Bad Certificate', code: 'E004', stackTrace: stackTrace),
       DioExceptionType.connectionError =>
-        AppError._('Connection Error', code: 'E005'),
+        AppError._('Connection Error', code: 'E005', stackTrace: stackTrace),
     };
     return appError;
   }
 
-  static AppError networkError(dynamic error) {
-    return AppError._('Network Error', code: 'E006');
+  static AppError networkError(dynamic error, {StackTrace? stackTrace}) {
+    return AppError._('Network Error', code: 'E006', stackTrace: stackTrace);
   }
 
-  static AppError catchError(String error, {String? code}) {
-    return AppError._('Catch Error: $error', code: code);
+  static AppError catchError(String error,
+      {String? code, StackTrace? stackTrace}) {
+    return AppError._('Catch Error: $error',
+        code: code, stackTrace: stackTrace);
   }
 
-  static AppError cancelledByUser() {
-    return AppError._('Sign in cancelled by user', code: 'E008');
+  static AppError cancelledByUser({StackTrace? stackTrace}) {
+    return AppError._('Sign in cancelled by user',
+        code: 'E008', stackTrace: stackTrace);
   }
 
-  static AppError firebaseAuthError(FirebaseAuthException e) {
+  static AppError firebaseAuthError(FirebaseAuthException e,
+      {StackTrace? stackTrace}) {
     switch (e.code) {
       case 'account-exists-with-different-credential':
         return AppError._(
             'An account already exists with the same email address but different sign-in credentials.',
-            code: '${e.code}\n${e.message}');
+            code: '${e.code}\n${e.message}',
+            stackTrace: stackTrace);
       case 'invalid-credential':
         return AppError._('The credential is malformed or has expired.',
-            code: '${e.code}\n${e.message}');
+            code: '${e.code}\n${e.message}', stackTrace: stackTrace);
       case 'operation-not-allowed':
         return AppError._('Google sign-in is not enabled for this project.',
-            code: '${e.code}\n${e.message}');
+            code: '${e.code}\n${e.message}', stackTrace: stackTrace);
       case 'user-disabled':
         return AppError._('The user account has been disabled.',
-            code: '${e.code}\n${e.message}');
+            code: '${e.code}\n${e.message}', stackTrace: stackTrace);
       case 'user-not-found':
         return AppError._('No user found for that email.',
-            code: '${e.code}\n${e.message}');
+            code: '${e.code}\n${e.message}', stackTrace: stackTrace);
       case 'wrong-password':
         return AppError._('Wrong password provided for that user.',
-            code: '${e.code}\n${e.message}');
+            code: '${e.code}\n${e.message}', stackTrace: stackTrace);
       case 'invalid-verification-code':
         return AppError._(
             'The credential verification code received is invalid.',
-            code: '${e.code}\n${e.message}');
+            code: '${e.code}\n${e.message}',
+            stackTrace: stackTrace);
       case 'invalid-verification-id':
         return AppError._('The credential verification ID received is invalid.',
-            code: '${e.code}\n${e.message}');
+            code: '${e.code}\n${e.message}', stackTrace: stackTrace);
       default:
         return AppError._('An unknown error occurred',
-            code: '${e.code}\n${e.message}');
+            code: '${e.code}\n${e.message}', stackTrace: stackTrace);
     }
   }
 }
