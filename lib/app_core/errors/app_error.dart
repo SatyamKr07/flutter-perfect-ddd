@@ -13,7 +13,6 @@ class AppError {
 
   // Private constructor
   AppError._(this.message, {this.code}) {
-    // if (code == "return") return;
     // _showErrorSnachbar();
     getIt<MyAppCubit>().addAppError(AppError._emitError(message, code: code));
     logger.e(message);
@@ -22,7 +21,6 @@ class AppError {
   AppError._emitError(this.message, {this.code});
 
   void _showErrorSnachbar() {
-    // logger.e('AppError: $message${code != null ? ' (Code: $code)' : ''}');
     if (Env.isDev) {
       Fluttertoast.showToast(
           msg: message,
@@ -32,22 +30,16 @@ class AppError {
           backgroundColor: Colors.red,
           textColor: Colors.white,
           fontSize: 16.0);
-      // getIt<MyAppCubit>().addAppError(AppError.general(message));
-      // GlobalSnackbarService().showSnackbar(message, code: code);
     }
   }
 
   // Factory method for general errors
   factory AppError.general(String message, {String? code}) {
-    // logger.e('General Error: $message');
-    // getIt<MyAppCubit>().addAppError(AppError.general(message));
     final error = AppError._(message, code: code);
     return error;
   }
 
   static AppError responseError(Response response) {
-    // logger.e(response);
-    // getIt<MyAppCubit>().addAppError(AppError.general(response.statusMessage!));
     final error = switch (response.statusCode) {
       401 => AppError._('Unauthorized', code: 'E401'),
       404 => AppError._('Not Found', code: 'E404'),
@@ -57,7 +49,6 @@ class AppError {
   }
 
   static AppError dioError(DioException error) {
-    // logger.e(error);
     final appError = switch (error.type) {
       DioExceptionType.connectionTimeout ||
       DioExceptionType.sendTimeout ||
@@ -75,25 +66,18 @@ class AppError {
   }
 
   static AppError networkError(dynamic error) {
-    // logger.e(error);
     return AppError._('Network Error', code: 'E006');
   }
 
   static AppError catchError(String error, {String? code}) {
-    // logger.e(error);
-    // getIt<MyAppCubit>().addAppError(AppError._(error));
     return AppError._('Catch Error: $error', code: code);
   }
 
   static AppError cancelledByUser() {
-    // logger.e("cancelledByUser");
-    // getIt<MyAppCubit>().addAppError(AppError._("Ca"));
-
     return AppError._('Sign in cancelled by user', code: 'E008');
   }
 
   static AppError firebaseAuthError(FirebaseAuthException e) {
-    // logger.e(e);
     switch (e.code) {
       case 'account-exists-with-different-credential':
         return AppError._(

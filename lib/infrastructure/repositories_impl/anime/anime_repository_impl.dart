@@ -2,7 +2,6 @@ import 'package:dio/dio.dart';
 import 'package:flutter_perfect_ddd/infrastructure/repositories_impl/anime/anime_remote.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:injectable/injectable.dart';
-import '../../../app_core/errors/app_error_handler.dart';
 import '../../../domain/repositories/anime/anime_repository.dart';
 import '../../../app_core/errors/app_error.dart';
 import '../../../domain/models/anime/anime_model.dart';
