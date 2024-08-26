@@ -44,6 +44,12 @@ class MyAppCubit extends Cubit<MyAppState> {
 
   Future<void> addAppError(AppError error) async {
     emit(state.copyWith(error: error));
+    // await _errorReportingRepository.setCustomData('error_type', error.runtimeType.toString());
+    // await _errorReportingRepository.logMessage('App error occurred: ${error.message}');
+  }
+
+  Future<void> addErrorToCrashlytics(AppError error) async {
+    emit(state.copyWith(error: error));
     await _errorReportingRepository.reportError(error, error.stackTrace);
     // await _errorReportingRepository.setCustomData('error_type', error.runtimeType.toString());
     // await _errorReportingRepository.logMessage('App error occurred: ${error.message}');

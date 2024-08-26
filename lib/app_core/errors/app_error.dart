@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_perfect_ddd/app_core/my_enums/my_enums.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import '../../application/my_app/my_app_cubit.dart';
 import '../../env.dart';
@@ -18,6 +19,9 @@ class AppError {
     logger.e(message, stackTrace: stackTrace);
     if (Env.isDev) {
       getIt<MyAppCubit>().addAppError(
+          AppError._emitError(message, code: code, stackTrace: stackTrace));
+    } else if (Env.getEnv == EnumEnv.prod) {
+      getIt<MyAppCubit>().addErrorToCrashlytics(
           AppError._emitError(message, code: code, stackTrace: stackTrace));
     }
   }
