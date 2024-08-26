@@ -15,9 +15,11 @@ class AppError {
   // Private constructor
   AppError._(this.message, {this.code, this.stackTrace}) {
     _showErrorSnachbar();
-    getIt<MyAppCubit>().addAppError(
-        AppError._emitError(message, code: code, stackTrace: stackTrace));
     logger.e(message, stackTrace: stackTrace);
+    if (Env.isDev) {
+      getIt<MyAppCubit>().addAppError(
+          AppError._emitError(message, code: code, stackTrace: stackTrace));
+    }
   }
 
   // Private constructor
@@ -26,7 +28,7 @@ class AppError {
   void _showErrorSnachbar() {
     if (Env.isDev) {
       Fluttertoast.showToast(
-          msg: message,
+          msg: "$code\n$message",
           toastLength: Toast.LENGTH_LONG,
           gravity: ToastGravity.BOTTOM,
           timeInSecForIosWeb: 1,
@@ -45,30 +47,32 @@ class AppError {
 
   static AppError responseError(Response response, {StackTrace? stackTrace}) {
     final error = switch (response.statusCode) {
-      401 => AppError._('Unauthorized', code: 'E401', stackTrace: stackTrace),
-      404 => AppError._('Not Found', code: 'E404', stackTrace: stackTrace),
-      _ => AppError._('Server Error', code: 'E500', stackTrace: stackTrace),
+      401 || 404 || 500 => AppError._(response.statusMessage ?? '',
+          code: response.statusCode.toString(), stackTrace: stackTrace),
+      _ => AppError._('Default Response Error: ${response.statusMessage}',
+          code: response.statusCode.toString(), stackTrace: stackTrace),
     };
     return error;
   }
 
   static AppError dioError(DioException error, {StackTrace? stackTrace}) {
-    final appError = switch (error.type) {
-      DioExceptionType.connectionTimeout ||
-      DioExceptionType.sendTimeout ||
-      DioExceptionType.receiveTimeout =>
-        AppError._('Network Timeout', code: 'E001', stackTrace: stackTrace),
-      DioExceptionType.badResponse =>
-        responseError(error.response!, stackTrace: stackTrace),
-      DioExceptionType.cancel =>
-        AppError._('Request Cancelled', code: 'E002', stackTrace: stackTrace),
-      DioExceptionType.unknown =>
-        AppError._('Unknown Dio Error', code: 'E003', stackTrace: stackTrace),
-      DioExceptionType.badCertificate =>
-        AppError._('Bad Certificate', code: 'E004', stackTrace: stackTrace),
-      DioExceptionType.connectionError =>
-        AppError._('Connection Error', code: 'E005', stackTrace: stackTrace),
-    };
+    // final appError = switch (error.type) {
+    //   DioExceptionType.connectionTimeout ||
+    //   DioExceptionType.sendTimeout ||
+    //   DioExceptionType.receiveTimeout =>
+    //     AppError._('Network Timeout', code: 'E001', stackTrace: stackTrace),
+    //   DioExceptionType.badResponse =>
+    //     responseError(error.response!, stackTrace: stackTrace),
+    //   DioExceptionType.cancel =>
+    //     AppError._('Request Cancelled', code: 'E002', stackTrace: stackTrace),
+    //   DioExceptionType.unknown =>
+    //     AppError._('Unknown Dio Error', code: 'E003', stackTrace: stackTrace),
+    //   DioExceptionType.badCertificate =>
+    //     AppError._('Bad Certificate', code: 'E004', stackTrace: stackTrace),
+    //   DioExceptionType.connectionError =>
+    //     AppError._('Connection Error', code: 'E005', stackTrace: stackTrace),
+    // };
+    final appError = AppError._(error.toString());
     return appError;
   }
 

@@ -2,11 +2,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import '../../app_core/errors/app_error.dart';
 import '../../domain/models/user/user_model.dart';
+import '../../domain/repositories/error_reporting/error_reporting_repository.dart';
 import 'my_app_state.dart';
 
 @lazySingleton
 class MyAppCubit extends Cubit<MyAppState> {
-  MyAppCubit() : super(MyAppState(themeMode: ThemeModeType.light));
+  final ErrorReportingRepository _errorReportingRepository;
+
+  MyAppCubit(this._errorReportingRepository)
+      : super(MyAppState(themeMode: ThemeModeType.light));
 
   void toggleTheme() {
     final newThemeMode = state.themeMode == ThemeModeType.light
@@ -38,7 +42,10 @@ class MyAppCubit extends Cubit<MyAppState> {
     emit(state.copyWith(userModel: null));
   }
 
-  void addAppError(AppError error) {
+  Future<void> addAppError(AppError error) async {
     emit(state.copyWith(error: error));
+    await _errorReportingRepository.reportError(error, error.stackTrace);
+    // await _errorReportingRepository.setCustomData('error_type', error.runtimeType.toString());
+    // await _errorReportingRepository.logMessage('App error occurred: ${error.message}');
   }
 }
