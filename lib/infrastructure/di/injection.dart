@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:injectable/injectable.dart';
 import '../../presentation/routes/my_app_router.dart';
 import '../../env.dart';
+import '../services/my_dio_interceptor/my_dio_interceptor.dart';
 import 'injection.config.dart';
 
 final GetIt getIt = GetIt.instance;
@@ -13,7 +14,11 @@ final GetIt getIt = GetIt.instance;
 @module
 abstract class RegisterModule {
   @lazySingleton
-  Dio get dio => Dio(BaseOptions(baseUrl: Env.baseUrl));
+  Dio get dio {
+    final dio = Dio(BaseOptions(baseUrl: Env.baseUrl));
+    dio.interceptors.add(MyDioInterceptor());
+    return dio;
+  }
 
   @lazySingleton
   GoRouter get router => MyAppRouter.router;

@@ -127,6 +127,10 @@ class AnimeListItem extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: Column(
           children: [
+            TextButton(
+              onPressed: () => throw Exception(),
+              child: const Text("Throw Test Exception"),
+            ),
             MyCachedNetworkImage(imageUrl: anime.images.jpg.imageUrl),
             ListTile(
               contentPadding: const EdgeInsets.all(0),

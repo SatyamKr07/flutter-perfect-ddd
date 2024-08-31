@@ -13,15 +13,15 @@ class AnimeRepositoryImpl implements AnimeRepository {
 
   @override
   Future<Either<AppError, AnimeResponse>> getPopularAnime(
-      {int page = 1, int limit = 5}) async {
+      {int page = -1, int limit = 5}) async {
     try {
       final response =
-          await _animeRemote.getPopularAnime(page: page, limit: limit);
+          await _animeRemote.getPopularAnime(page: -1, limit: limit);
       return right(response);
-    } on DioException catch (e) {
-      return left(AppError.dioError(e));
-    } catch (e) {
-      return left(AppError.catchError(e.toString()));
+    } on DioException catch (e, stackTrace) {
+      return left(AppError.dioError(e, stackTrace: stackTrace));
+    } catch (e, stackTrace) {
+      return left(AppError.catchError(e.toString(), stackTrace: stackTrace));
     }
   }
 }

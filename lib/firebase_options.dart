@@ -63,6 +63,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '268789551686',
     projectId: 'flutter-perfect-ddd',
     storageBucket: 'flutter-perfect-ddd.appspot.com',
+    androidClientId: '268789551686-1ogccdk6nglbf1agteic2q86v3g8h9cq.apps.googleusercontent.com',
+    iosClientId: '268789551686-0u7le5mdrqdqk6t51rc50g4605jo4cur.apps.googleusercontent.com',
     iosBundleId: 'com.example.flutterPerfectDdd',
   );
 
@@ -72,6 +74,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '268789551686',
     projectId: 'flutter-perfect-ddd',
     storageBucket: 'flutter-perfect-ddd.appspot.com',
+    androidClientId: '268789551686-1ogccdk6nglbf1agteic2q86v3g8h9cq.apps.googleusercontent.com',
+    iosClientId: '268789551686-0u7le5mdrqdqk6t51rc50g4605jo4cur.apps.googleusercontent.com',
     iosBundleId: 'com.example.flutterPerfectDdd',
   );
 
@@ -83,4 +87,5 @@ class DefaultFirebaseOptions {
     authDomain: 'flutter-perfect-ddd.firebaseapp.com',
     storageBucket: 'flutter-perfect-ddd.appspot.com',
   );
+
 }
